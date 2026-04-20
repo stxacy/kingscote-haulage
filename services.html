@@ -177,8 +177,17 @@
       .approach-section { padding: var(--space-12) 0; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card-wrap,
-      .service-card { min-height: 320px; }
+      .service-card { min-height: 420px; }
+      .card-front,
+      .card-back { padding: var(--space-6) var(--space-6); }
       .approach-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 479px) {
+      .service-card-wrap,
+      .service-card { min-height: 460px; }
+      .card-front,
+      .card-back { padding: var(--space-5) var(--space-4); }
     }
   </style>
 </head>
