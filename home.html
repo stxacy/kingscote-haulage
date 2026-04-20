@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingscote Haulage — Environmental Haulage & Waste Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      background-image: url('kingscote_haulage2.png');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: scroll;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 20, 50, 0.55) 0%,
+          rgba(0, 20, 50, 0.0) 18%
+        ),
+        linear-gradient(
+          to top,
+          rgba(0, 60, 110, 0.72) 0%,
+          rgba(0, 60, 110, 0.28) 50%,
+          rgba(0, 60, 110, 0.0) 100%
+        );
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--color-blue-primary);
+      z-index: 3;
+    }
+
+    .hero-grid { display: none; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8) 5rem;
+    }
+
+    .hero-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin-bottom: var(--space-6);
+      display: block;
+    }
+
+    .hero h1 {
+      color: var(--color-white);
+      max-width: 820px;
+      margin-bottom: var(--space-6);
+    }
+
+    .hero h1 em {
+      font-family: var(--font-sans);
+      font-style: normal;
+      color: rgba(255,255,255,0.75);
+      font-weight: 200;
+    }
+
+    .hero-desc {
+      color: rgba(255,255,255,0.9);
+      font-size: var(--text-md);
+      font-weight: 300;
+      max-width: 540px;
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-10);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: var(--space-6);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+    }
+
+
+    /* ---- STATS BAR ---- */
+    .stats-bar {
+      background-color: var(--color-blue-primary);
+      padding: var(--space-8) 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    .stat-item {
+      padding: var(--space-4) var(--space-6);
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-4xl);
+      font-weight: 200;
+      color: var(--color-white);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+
+    /* ---- SERVICES ---- */
+    .services-section {
+      padding: var(--space-20) 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background-color: var(--color-grey-light);
+    }
+
+    /* Flip card wrapper — grid cell */
+    .service-card-wrap {
+      background-color: var(--color-white);
+      perspective: 1200px;
+      cursor: pointer;
+      min-height: 380px;
+    }
+
+    .service-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card-wrap.flipped .service-card {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: var(--space-10) var(--space-8);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-front {
+      background-color: var(--color-white);
+      border-bottom: 3px solid transparent;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .service-card-wrap:not(.flipped):hover .card-front {
+      background-color: var(--color-blue-light);
+      border-bottom-color: var(--color-blue-primary);
+    }
+
+    .card-back {
+      background-color: #0077a8;
+      transform: rotateY(180deg);
+      border-bottom: 3px solid rgba(255,255,255,0.3);
+    }
+
+    .service-number {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      color: var(--color-grey-mid);
+      margin-bottom: var(--space-6);
+      display: block;
+    }
+
+    .service-icon-wrap {
+      width: 44px;
+      height: 44px;
+      margin-bottom: var(--space-6);
+      color: var(--color-blue-primary);
+    }
+
+    .card-front h3 {
+      color: var(--color-navy-dark);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .card-front > p {
+      color: var(--color-body-text);
+      line-height: var(--leading-relaxed);
+      font-size: var(--text-sm);
+      flex: 1;
+    }
+
+    .flip-hint {
+      margin-top: var(--space-8);
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+    }
+
+    .card-back h3 {
+      color: var(--color-white);
+      font-size: var(--text-base);
+      margin-bottom: var(--space-6);
+    }
+
+    .card-back > p {
+      color: rgba(255,255,255,0.65);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      flex: 1;
+    }
+
+    .card-back-cta {
+      display: block;
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s ease;
+    }
+
+    .card-back-cta:hover { color: var(--color-white); }
+
+
+    /* ---- ABOUT PREVIEW ---- */
+    .about-preview {
+      background-color: var(--color-blue-primary);
+      padding: var(--space-20) 0;
+    }
+
+    .about-preview-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    .about-text h2 {
+      color: var(--color-white);
+      margin-bottom: var(--space-6);
+    }
+
+    .about-text p {
+      color: rgba(255,255,255,0.65);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-8);
+    }
+
+    .about-visual {
+      position: relative;
+      height: 460px;
+      background-image: url('kingscote_haulage.jpeg');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 90, 145, 0.25) 0%,
+        rgba(0, 90, 145, 0.08) 55%,
+        rgba(0, 90, 145, 0.0) 100%
+      );
+      z-index: 1;
+    }
+
+    .about-visual-text {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-10) var(--space-10);
+      border-top: none;
+      width: 100%;
+    }
+
+    .about-visual-text blockquote {
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.12rem;
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 var(--space-4);
+      line-height: var(--leading-relaxed);
+    }
+
+    .about-visual-text cite {
+      font-family: var(--font-label);
+      font-size: 0.6rem;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      font-style: normal;
+    }
+
+    /* ---- APPROACH ---- */
+    .approach-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-blue-light);
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2);
+      margin-top: 0;
+    }
+
+    .approach-item {
+      background-color: var(--color-white);
+      padding: var(--space-10) var(--space-8);
+      border-top: 3px solid var(--color-blue-primary);
+    }
+
+    .approach-item h3 {
+      color: var(--color-navy-dark);
+      font-size: var(--text-base);
+      margin-bottom: var(--space-4);
+    }
+
+    .approach-item p {
+      color: var(--color-body-text);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 991px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-preview-inner { grid-template-columns: 1fr; }
+      .about-visual { height: 300px; }
+      .approach-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 767px) {
+      .hero-content { padding: 0 var(--space-6) 3.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card-wrap,
+      .service-card { min-height: 320px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-section { padding: var(--space-12) 0; }
+      .about-preview { padding: var(--space-12) 0; }
+      .about-preview-inner { gap: var(--space-8); }
+      .approach-section { padding: var(--space-12) 0; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 479px) {
+      .hero-content { padding: 0 var(--space-4) 3rem; }
+      .stat-item { padding: var(--space-4); }
+      .stat-number { font-size: var(--text-3xl); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+
+      <a href="home.html" class="logo-link" aria-label="Kingscote Haulage — Home">
+        <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <span class="hero-label">Environmental Haulage & Waste Management</span>
+      <h1>Moving Material<br><em>Responsibly</em></h1>
+      <p class="hero-desc">
+        Offering a comprehensive range of environmental haulage services at competitive rates.
+        Kingscote Haulage serves both Morrisroe Group companies and external clients across the South East.
+      </p>
+      <div class="hero-actions">
+        <a href="contact.html" class="button">Request a Quote</a>
+        <a href="about.html" class="cta" style="font-size:var(--text-sm); padding: 10px 28px;">Our Services</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       STATS BAR
+       ============================================================ -->
+  <section class="stats-bar" aria-label="Company statistics">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">32T</span>
+        <span class="stat-label">Gross Vehicle Weight</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Euro VI</span>
+        <span class="stat-label">Compliant Fleet</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">6+</span>
+        <span class="stat-label">Service Streams</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">M1</span>
+        <span class="stat-label">Junction 2, Borehamwood</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">What We Do</span>
+        <h2>Our Services</h2>
+        <p>
+          Increased control over transportation and haulage enables us to improve site logistics
+          and better manage our carbon footprint — for clients and Group companies alike.
+        </p>
+      </div>
+    </div>
+
+    <div class="container container--wide" style="padding:0;">
+      <div class="services-grid">
+
+        <!-- 01 Haulage & Muck Away -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">01</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="26" width="36" height="10" rx="1"/>
+                  <path d="M4 26l6-12h20l6 12"/>
+                  <circle cx="12" cy="38" r="4"/><circle cx="32" cy="38" r="4"/>
+                  <line x1="12" y1="26" x2="12" y2="14"/><line x1="22" y1="26" x2="22" y2="14"/>
+                  <line x1="32" y1="26" x2="32" y2="14"/>
+                </svg>
+              </div>
+              <h3>Haulage & Muck Away</h3>
+              <p>Removal of waste materials including hazardous soils and clean inert waste, with full testing and classification services across the South East.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Haulage & Muck Away</h3>
+              <p>Kingscote Haulage removes waste materials from site. This includes moving soils and materials classified as hazardous, which may harm the environment or human health and require an extra duty of care. Clean inert waste, which does not come with such risks, as well as non-hazardous materials that may have low levels of contamination are also efficiently removed. The team carry out necessary testing to classify materials according to each site's requirements and can subsequently record and validate the removal of contaminated materials.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 Recycled Aggregates -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">02</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="22" cy="22" r="16"/>
+                  <path d="M14 22c0-4.4 3.6-8 8-8"/>
+                  <path d="M30 22c0 4.4-3.6 8-8 8"/>
+                  <path d="M10 18l4 4-4 4"/><path d="M34 26l-4-4 4-4"/>
+                </svg>
+              </div>
+              <h3>Recycled Aggregates</h3>
+              <p>Crushing and screening services producing recycled aggregates graded to specification — 6F1, 6F5, and Type 1–3 — for future site use.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Recycled Aggregates</h3>
+              <p>The team provide crushing and screening services to produce recycled aggregates for future use, grading them to specifications, such as 6f1, 6f5 and types 1 to 3, that are suitable for individual site requirements. This helps reduce the amount of waste being disposed of in landfills, cutting both costs and environmental impacts.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 Grab Hire -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">03</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="28" width="36" height="8" rx="1"/>
+                  <path d="M10 28V16h14"/>
+                  <path d="M24 16l8 8-8 8"/>
+                  <line x1="10" y1="20" x2="20" y2="20"/>
+                </svg>
+              </div>
+              <h3>Grab Hire</h3>
+              <p>Day work and haulage solutions using Euro VI compliant Scania tipper trucks, servicing both accessible and difficult-to-reach areas.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Grab Hire</h3>
+              <p>Grab lorries can be hired for day work, muck away and haulage, providing an efficient and cost-effective waste removal solution for both accessible and inaccessible areas. Each of our trucks is fitted with up-to-date technology for the highest levels of safety.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 Waste Disposal -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">04</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="14" width="28" height="24" rx="1"/>
+                  <path d="M6 14h32M16 14v-4h12v4"/>
+                  <line x1="16" y1="22" x2="16" y2="32"/><line x1="22" y1="22" x2="22" y2="32"/><line x1="28" y1="22" x2="28" y2="32"/>
+                </svg>
+              </div>
+              <h3>Waste Disposal</h3>
+              <p>Skips and roll-on/roll-off containers ranging from 6 to 40 cubic yards, providing flexible waste management solutions for all project scales.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Waste Disposal</h3>
+              <p>A variety of skips and roll on, roll off containers, which come in larger sizes for bigger waste volumes, can also be supplied to sites to assist with waste removal. The team's container sizes range from six to 40 cubic yards.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 Landfill & Restoration -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">05</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 34c6-8 12-4 18-10s10-10 18-10"/>
+                  <path d="M4 38h36"/>
+                  <circle cx="12" cy="14" r="4"/>
+                  <path d="M12 10V6M8.5 11.5L5 8M15.5 11.5L19 8"/>
+                </svg>
+              </div>
+              <h3>Landfill & Land Restoration</h3>
+              <p>Farm restoration, noise bunds, quarry and landfill site reinstatement across the South East — returning land to productive use.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Landfill & Land Restoration</h3>
+              <p>Additional services such as farm land restoration, construction of noise bunds and the reinstatement and restoration of old quarries and landfill sites in the South East are all catered for. Any EA permits along with exemptions and planning permissions can all be efficiently obtained by the team.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 Logistics & Fleet Control -->
+        <div class="service-card-wrap">
+          <div class="service-card">
+            <div class="card-front">
+              <span class="service-number">06</span>
+              <div class="service-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="22" cy="22" r="16"/>
+                  <circle cx="22" cy="22" r="4"/>
+                  <path d="M22 6v4M22 34v4M6 22h4M34 22h4"/>
+                  <path d="M10.5 10.5l2.8 2.8M30.7 30.7l2.8 2.8M10.5 33.5l2.8-2.8M30.7 13.3l2.8-2.8"/>
+                </svg>
+              </div>
+              <h3>Logistics & Fleet Control</h3>
+              <p>Dedicated logistics management to improve site efficiency, reduce haulage costs and tighten carbon reporting across the full supply chain.</p>
+              <span class="flip-hint">Learn more →</span>
+            </div>
+            <div class="card-back">
+              <h3>Logistics & Fleet Control</h3>
+              <p>Integrated logistics management embedded within your site team. We schedule load movements, reduce vehicle idle time, manage subcontractor hauliers and provide itemised carbon and cost reports across every movement — giving you full visibility and control of your haulage programme.</p>
+              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT PREVIEW (dark)
+       ============================================================ -->
+  <section class="about-preview">
+    <div class="about-preview-inner">
+
+      <div class="about-text">
+        <span class="section-label on-dark">About Kingscote</span>
+        <h2>Part of the Morrisroe Group</h2>
+        <p>
+          Kingscote Haulage was established to give the Morrisroe Group direct control over
+          transportation and environmental haulage. Operating from Junction 2 of the M1 in
+          Borehamwood, we serve both Group companies and a growing portfolio of external clients.
+        </p>
+        <p>
+          Our Euro VI compliant Scania tipper fleet and specialist operations team deliver a level
+          of service — and environmental accountability — that sets us apart.
+        </p>
+      </div>
+
+      <div class="about-visual">
+        <div class="about-visual-text">
+          <blockquote>
+            "Increased control over transportation enables us to improve site logistics and better manage our carbon footprint."
+          </blockquote>
+          <cite>Aiden Kelly — General Manager, Kingscote Haulage</cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       APPROACH
+       ============================================================ -->
+  <section class="approach-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Our Approach</span>
+        <h2>How We Work</h2>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <h3>Environmentally Led</h3>
+          <p>Our Euro VI fleet sets a benchmark for clean haulage. We track carbon output per movement and provide clients with full environmental reporting.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Competitive Rates</h3>
+          <p>Efficiency in operations translates directly to competitive pricing. We offer day rates, contract rates and bespoke project pricing.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Proven Logistics</h3>
+          <p>With deep roots in the Morrisroe Group, we understand construction logistics from both the site and haulier perspective — no learning curve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA BAND
+       ============================================================ -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Ready to talk?</h2>
+        <p>We work across the South East and welcome enquiries from all sectors.</p>
+      </div>
+      <a href="contact.html" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Get in Touch</a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="kingscotelogoclear2.png" alt="Kingscote Haulage" style="height:51px; width:auto;">
+        <p>Environmental haulage and waste management services for construction and industry across the South East of England. A Morrisroe Group company.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navigation</span>
+        <ul class="footer-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="group.html">The Group</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Contact</span>
+        <ul class="footer-links">
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-bottom:var(--space-1);">Head Office</li>
+          <li>Units 3–4 Oaks Court<br>Warwick Road<br>Borehamwood<br>Herts, WD6 1GS</li>
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-top:var(--space-4); margin-bottom:var(--space-1);">Yard</li>
+          <li><a href="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA" target="_blank" rel="noopener">10 Elton Way<br>Watford<br>WD25 8HA</a></li>
+          <li style="margin-top:var(--space-3);"><a href="tel:+442087314000">+44 (0)20 8731 4000</a></li>
+          <li><a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kingscote Haulage Ltd. A Morrisroe Group Company.</p>
+      <p>Registered in England & Wales</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var nav    = document.querySelector('.site-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var links  = document.querySelectorAll('.nav-links a');
+
+      // ---- Gradual transparent → white as user scrolls through hero ----
+      var fadeOver = window.innerHeight * 0.65; // fade completes at 65% of viewport height
+
+      function updateNav() {
+        if (nav.classList.contains('nav-open')) return;
+
+        var alpha  = Math.min(window.scrollY / fadeOver, 1);
+        var shadow = alpha > 0.85 ? '0 1px 0 rgba(0,0,0,0.08)' : 'none';
+
+        nav.style.backgroundColor = 'rgba(255,255,255,' + alpha + ')';
+        nav.style.boxShadow = shadow;
+
+        // Switch link/toggle colours at the midpoint
+        if (alpha < 0.5) {
+          nav.classList.add('nav-transparent');
+        } else {
+          nav.classList.remove('nav-transparent');
+        }
+      }
+
+      // Set initial transparent state
+      nav.style.backgroundColor = 'rgba(255,255,255,0)';
+      nav.style.boxShadow = 'none';
+      nav.classList.add('nav-transparent');
+
+      window.addEventListener('scroll', updateNav, { passive: true });
+
+      // ---- Mobile nav toggle ----
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('nav-open');
+        // Force white when menu opens; restore scroll state when it closes
+        if (nav.classList.contains('nav-open')) {
+          nav.style.backgroundColor = 'rgba(255,255,255,1)';
+          nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
+          nav.classList.remove('nav-transparent');
+        } else {
+          updateNav();
+        }
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('nav-open');
+          updateNav();
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('nav-open');
+          updateNav();
+        }
+      });
+    })();
+
+    // ---- Service card flip ----
+    document.querySelectorAll('.service-card-wrap').forEach(function(wrap) {
+      wrap.addEventListener('click', function() {
+        this.classList.toggle('flipped');
+      });
+    });
+  </script>
+</body>
+</html>

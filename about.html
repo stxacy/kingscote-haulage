@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Kingscote Haulage</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ---- STORY SECTION ---- */
+    .story-section {
+      padding: var(--space-20) 0;
+    }
+
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .story-text h2 {
+      color: var(--color-navy-dark);
+      margin-bottom: var(--space-6);
+    }
+
+    .story-text p {
+      color: var(--color-body-text);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-6);
+    }
+
+    .story-aside {
+      padding-top: var(--space-4);
+    }
+
+    .story-highlight {
+      background-color: var(--color-blue-light);
+      border-left: 3px solid var(--color-blue-primary);
+      padding: var(--space-8) var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .story-highlight h3 {
+      color: var(--color-navy-dark);
+      font-size: var(--text-base);
+      margin-bottom: var(--space-3);
+    }
+
+    .story-highlight p {
+      color: var(--color-body-text);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+
+    .details-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background-color: var(--color-grey-light);
+      margin-top: var(--space-6);
+    }
+
+    .details-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--color-white);
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .details-list .detail-key {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+    }
+
+    .details-list .detail-val {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: 400;
+      color: var(--color-navy-dark);
+    }
+
+
+    /* ---- VALUES ---- */
+    .values-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-blue-primary);
+    }
+
+    .values-section .section-intro h2 {
+      color: var(--color-white);
+    }
+
+    .values-section .section-intro p {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background-color: rgba(255,255,255,0.15);
+      margin-top: 0;
+    }
+
+    .value-item {
+      background-color: #0077a8;
+      padding: var(--space-10) var(--space-8);
+      border-top: 2px solid transparent;
+      transition: var(--transition-base);
+    }
+
+    .value-item:hover {
+      border-top-color: rgba(255,255,255,0.9);
+      background-color: rgba(255,255,255,0.12);
+    }
+
+    .value-number {
+      font-family: var(--font-sans);
+      font-size: 3.5rem;
+      font-weight: 200;
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+
+    .value-item h3 {
+      color: var(--color-white);
+      font-size: var(--text-base);
+      margin-bottom: var(--space-4);
+    }
+
+    .value-item p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+
+    /* ---- FLEET ---- */
+    .fleet-section {
+      padding: var(--space-20) 0;
+    }
+
+    .fleet-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    .fleet-text h2 {
+      color: var(--color-navy-dark);
+      margin-bottom: var(--space-6);
+    }
+
+    .fleet-text p {
+      color: var(--color-body-text);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-8);
+    }
+
+    .fleet-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background-color: var(--color-grey-light);
+    }
+
+    .fleet-spec {
+      background-color: var(--color-white);
+      padding: var(--space-6) var(--space-6);
+    }
+
+    .fleet-spec-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .fleet-spec-value {
+      font-family: var(--font-sans);
+      font-size: var(--text-xl);
+      font-weight: 300;
+      color: var(--color-navy-dark);
+    }
+
+    .fleet-visual {
+      background-image: url('kingscotetruck.png');
+      background-size: cover;
+      background-position: center;
+      height: 480px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fleet-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 100, 160, 0.04);
+    }
+
+    .fleet-visual-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .fleet-visual-inner { display: none; }
+
+
+    /* ---- TEAM ---- */
+    .team-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-blue-light);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background-color: var(--color-white);
+      overflow: hidden;
+      transition: var(--transition-base);
+    }
+
+    .team-card:hover {
+      box-shadow: 0 8px 32px rgba(16, 28, 62, 0.12);
+    }
+
+    .team-avatar {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+
+    .team-info {
+      padding: var(--space-8);
+      border-top: 3px solid var(--color-blue-primary);
+    }
+
+    .team-role {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-blue-primary);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .team-info h3 {
+      color: var(--color-navy-dark);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .team-info p {
+      color: var(--color-body-text);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 991px) {
+      .story-inner { grid-template-columns: 1fr; }
+      .fleet-inner { grid-template-columns: 1fr; }
+      .fleet-visual { height: 280px; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 767px) {
+      .story-section { padding: var(--space-12) 0; }
+      .values-section { padding: var(--space-12) 0; }
+      .fleet-section { padding: var(--space-12) 0; }
+      .team-section { padding: var(--space-12) 0; }
+      .team-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .fleet-specs { grid-template-columns: 1fr 1fr; }
+      .fleet-visual { height: 220px; }
+      .story-inner { gap: var(--space-8); }
+    }
+
+    @media (max-width: 479px) {
+      .fleet-specs { grid-template-columns: 1fr; }
+      .team-avatar { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+
+      <a href="home.html" class="logo-link" aria-label="Kingscote Haulage — Home">
+        <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-hero-label">Who We Are</span>
+      <h1>About Kingscote</h1>
+      <p class="hero-sub">
+        Environmental haulage specialists operating within the Morrisroe Group — delivering responsible,
+        efficient logistics for construction and industry.
+      </p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       COMPANY STORY
+       ============================================================ -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-inner">
+
+        <div class="story-text">
+          <span class="section-label">Our Story</span>
+          <h2>Built to Deliver</h2>
+          <p>
+            Kingscote Haulage was established to give the Morrisroe Group greater control over
+            its transportation and environmental logistics operations. What began as an internal
+            solution has grown into a specialist haulage business serving a broad external client base.
+          </p>
+          <p>
+            Operating from our base at Junction 2 of the M1 in Borehamwood, Hertfordshire,
+            we are positioned to serve construction sites, industrial projects and environmental
+            schemes across London and the South East.
+          </p>
+          <p>
+            Every movement we make is tracked against environmental performance standards.
+            Our Euro VI compliant Scania tipper fleet represents our commitment to reducing the
+            carbon footprint of construction logistics — without compromising on productivity.
+          </p>
+        </div>
+
+        <div class="story-aside">
+          <div class="story-highlight">
+            <h3>Part of the Morrisroe Group</h3>
+            <p>
+              Kingscote Haulage sits within the Morrisroe Group — a leading construction and engineering
+              business operating across the UK. This gives us access to group-level resources, expertise
+              and procurement while maintaining the agility of a specialist contractor.
+            </p>
+          </div>
+
+          <ul class="details-list">
+            <li>
+              <span class="detail-key">Location</span>
+              <span class="detail-val">Borehamwood, Herts</span>
+            </li>
+            <li>
+              <span class="detail-key">Fleet Standard</span>
+              <span class="detail-val">Euro VI Compliant</span>
+            </li>
+            <li>
+              <span class="detail-key">Vehicle Type</span>
+              <span class="detail-val">32T Scania Tippers</span>
+            </li>
+            <li>
+              <span class="detail-key">Coverage Area</span>
+              <span class="detail-val">London & South East</span>
+            </li>
+            <li>
+              <span class="detail-key">Parent Group</span>
+              <span class="detail-val">Morrisroe Group</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VALUES
+       ============================================================ -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-intro" style="text-align:center;">
+        <span class="section-label on-dark">What Drives Us</span>
+        <h2>Our Values</h2>
+        <p style="color:rgba(255,255,255,0.85); font-size:var(--text-md);">
+          These principles guide every project, every movement and every client relationship.
+        </p>
+      </div>
+    </div>
+    <div class="container container--wide" style="padding:0;">
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="value-number">01</span>
+          <h3>Environmental Responsibility</h3>
+          <p>We track and report on carbon per movement and invest in the cleanest available technology to minimise environmental impact.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-number">02</span>
+          <h3>Operational Reliability</h3>
+          <p>Construction programmes depend on logistics. We deliver on time, every time — with contingency built in at every stage.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-number">03</span>
+          <h3>Transparent Pricing</h3>
+          <p>No hidden costs, no surprises. We build trusted long-term relationships with clients through honest, competitive pricing.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-number">04</span>
+          <h3>Safety First</h3>
+          <p>Our drivers and operations team follow rigorous safety protocols. Every vehicle, every load and every site is managed to the highest standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FLEET
+       ============================================================ -->
+  <section class="fleet-section">
+    <div class="container">
+      <div class="fleet-inner">
+
+        <div class="fleet-visual">
+          <div class="fleet-visual-inner" aria-hidden="true">
+            <span class="big">Euro</span>
+            <span class="big">VI</span>
+            <span class="small">Compliant Fleet</span>
+          </div>
+        </div>
+
+        <div class="fleet-text">
+          <span class="section-label">Our Fleet</span>
+          <h2>Built for the Job</h2>
+          <p>
+            Our 32 tonne gross Scania tipper trucks represent the benchmark in clean, capable
+            construction haulage. Fully Euro VI compliant, they are suited to the most demanding
+            urban and out-of-town project environments.
+          </p>
+          <p>
+            Each vehicle is maintained to manufacturer standards, tracked in real time and operated
+            by trained, experienced drivers who understand construction site protocols.
+          </p>
+
+          <div class="fleet-specs">
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Gross Weight</span>
+              <span class="fleet-spec-value">32 Tonne</span>
+            </div>
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Emission Standard</span>
+              <span class="fleet-spec-value">Euro VI</span>
+            </div>
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Vehicle Make</span>
+              <span class="fleet-spec-value">Scania</span>
+            </div>
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Vehicle Type</span>
+              <span class="fleet-spec-value">Tipper</span>
+            </div>
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Skip Range</span>
+              <span class="fleet-spec-value">6–40 cu yd</span>
+            </div>
+            <div class="fleet-spec">
+              <span class="fleet-spec-label">Tracking</span>
+              <span class="fleet-spec-value">Real-Time GPS</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TEAM
+       ============================================================ -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">The People</span>
+        <h2>Leadership Team</h2>
+        <p>Experienced professionals with deep roots in construction logistics and environmental haulage.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="aiden-kelly.jpg" alt="Aiden Kelly — General Manager" style="object-position: center 18%;">
+          </div>
+          <div class="team-info">
+            <span class="team-role">General Manager</span>
+            <h3>Aiden Kelly</h3>
+            <p>
+              Aiden leads Kingscote Haulage's overall operations, strategy and client relationships.
+              With extensive experience in construction logistics, he ensures the business delivers
+              on its environmental and commercial commitments.
+            </p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="jamie-kelly.jpg" alt="Jamie Kelly — Operations Manager" style="object-position: center 12%;">
+          </div>
+          <div class="team-info">
+            <span class="team-role">Operations Manager</span>
+            <h3>Jamie Kelly</h3>
+            <p>
+              Jamie manages the day-to-day coordination of fleet movements, site logistics and
+              driver operations. His hands-on approach ensures that every project runs safely,
+              efficiently and on schedule.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA BAND
+       ============================================================ -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Work with us</h2>
+        <p>Serving construction, civil engineering and environmental projects across the South East.</p>
+      </div>
+      <a href="contact.html" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Contact the Team</a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="kingscotelogoclear2.png" alt="Kingscote Haulage" style="height:51px; width:auto;">
+        <p>Environmental haulage and waste management services for construction and industry across the South East of England. A Morrisroe Group company.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navigation</span>
+        <ul class="footer-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="group.html">The Group</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Contact</span>
+        <ul class="footer-links">
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-bottom:var(--space-1);">Head Office</li>
+          <li>Units 3–4 Oaks Court<br>Warwick Road<br>Borehamwood<br>Herts, WD6 1GS</li>
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-top:var(--space-4); margin-bottom:var(--space-1);">Yard</li>
+          <li><a href="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA" target="_blank" rel="noopener">10 Elton Way<br>Watford<br>WD25 8HA</a></li>
+          <li style="margin-top:var(--space-3);"><a href="tel:+442087314000">+44 (0)20 8731 4000</a></li>
+          <li><a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kingscote Haulage Ltd. A Morrisroe Group Company.</p>
+      <p>Registered in England & Wales</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var nav    = document.querySelector('.site-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var links  = document.querySelectorAll('.nav-links a');
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('nav-open');
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('nav-open');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('nav-open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

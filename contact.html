@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kingscote Haulage</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ---- CONTACT SECTION ---- */
+    .contact-section {
+      padding: var(--space-20) 0;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+
+    /* ---- CONTACT CARDS ---- */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .contact-card {
+      padding: var(--space-8);
+      background-color: var(--color-white);
+      border-left: 3px solid transparent;
+      border-top: 1px solid var(--color-grey-light);
+      border-right: 1px solid var(--color-grey-light);
+      border-bottom: 1px solid var(--color-grey-light);
+      transition: var(--transition-base);
+    }
+
+    .contact-card:hover {
+      border-left-color: var(--color-blue-primary);
+      box-shadow: 0 4px 24px rgba(16, 28, 62, 0.08);
+    }
+
+    .contact-card-icon {
+      width: 36px;
+      height: 36px;
+      color: var(--color-blue-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .contact-card-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .contact-card-value {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      font-weight: 300;
+      color: var(--color-navy-dark);
+      line-height: var(--leading-relaxed);
+    }
+
+    .contact-card-value a {
+      color: var(--color-navy-dark);
+      transition: var(--transition-colour);
+    }
+
+    .contact-card-value a:hover {
+      color: var(--color-blue-primary);
+    }
+
+
+    /* ---- FORM ---- */
+    .contact-form-wrap {
+      background-color: var(--color-white);
+    }
+
+    .form-header {
+      margin-bottom: var(--space-10);
+    }
+
+    .form-header h2 {
+      color: var(--color-navy-dark);
+      margin-bottom: var(--space-4);
+    }
+
+    .form-header p {
+      color: var(--color-body-text);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .form-group label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px var(--space-4);
+      background-color: var(--color-white);
+      border: 1px solid var(--color-grey-light);
+      border-radius: var(--radius-none);
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: 300;
+      color: var(--color-navy-dark);
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-blue-primary);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--color-grey-mid);
+      font-weight: 300;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: var(--leading-relaxed);
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b9b9b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+      cursor: pointer;
+    }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      padding-top: var(--space-2);
+    }
+
+    .form-note {
+      font-size: var(--text-xs);
+      color: var(--color-grey-mid);
+      letter-spacing: var(--tracking-tight);
+    }
+
+
+    /* ---- LOCATION STRIP ---- */
+    .location-strip {
+      background-color: var(--color-blue-primary);
+      padding: var(--space-16) 0;
+    }
+
+    .location-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    .location-text h2 {
+      color: var(--color-white);
+      margin-bottom: var(--space-6);
+    }
+
+    .location-text p {
+      color: rgba(255,255,255,0.9);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-6);
+    }
+
+    .location-address {
+      background-color: rgba(255,255,255,0.12);
+      border-left: 3px solid rgba(255,255,255,0.5);
+      padding: var(--space-6) var(--space-8);
+    }
+
+    .location-address p {
+      color: rgba(255,255,255,0.9);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+
+    .location-map {
+      height: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 991px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .location-inner { grid-template-columns: 1fr; gap: var(--space-8); }
+      .location-map { height: 220px; }
+    }
+
+    @media (max-width: 767px) {
+      .contact-section { padding: var(--space-12) 0; }
+      .contact-layout { gap: var(--space-10); }
+      .location-strip { padding: var(--space-12) 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-submit { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+      .form-header { margin-bottom: var(--space-8); }
+    }
+
+    @media (max-width: 479px) {
+      .contact-card { padding: var(--space-6); }
+      .location-map { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+
+      <a href="home.html" class="logo-link" aria-label="Kingscote Haulage — Home">
+        <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-hero-label">Get in Touch</span>
+      <h1>Contact Us</h1>
+      <p class="hero-sub">
+        Whether you need a quote, have a project to discuss or want to learn more about
+        our services — we'd like to hear from you.
+      </p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       CONTACT MAIN
+       ============================================================ -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- CONTACT CARDS -->
+        <div class="contact-details">
+          <span class="section-label" style="margin-bottom:var(--space-6);">Our Details</span>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 3C12.5 3 8 7.5 8 13c0 8 10 20 10 20s10-12 10-20c0-5.5-4.5-10-10-10z"/>
+                <circle cx="18" cy="13" r="3.5"/>
+              </svg>
+            </div>
+            <span class="contact-card-label">Head Office</span>
+            <div class="contact-card-value">
+              Units 3–4 Oaks Court<br>
+              Warwick Road, Borehamwood<br>
+              Hertfordshire, WD6 1GS
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 7h6l3 7-3.5 2A18 18 0 0 0 22 27l2-3.5 7 3v6c-14 2-26-10-25-25.5z"/>
+              </svg>
+            </div>
+            <span class="contact-card-label">Telephone</span>
+            <div class="contact-card-value">
+              <a href="tel:+442087314000">+44 (0)20 8731 4000</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="8" width="28" height="20" rx="2"/>
+                <path d="M4 12l14 9 14-9"/>
+              </svg>
+            </div>
+            <span class="contact-card-label">Email</span>
+            <div class="contact-card-value">
+              <a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="18" r="14"/>
+                <path d="M18 10v8l5 5"/>
+              </svg>
+            </div>
+            <span class="contact-card-label">Office Hours</span>
+            <div class="contact-card-value">
+              Monday – Friday<br>
+              07:00 – 17:30
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrap">
+          <div class="form-header">
+            <span class="section-label">Send an Enquiry</span>
+            <h2>Request a Quote</h2>
+            <p>
+              Tell us about your project and we'll be in touch with a competitive quote
+              within one working day.
+            </p>
+          </div>
+
+          <form class="contact-form" action="#" method="POST" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" placeholder="John" autocomplete="given-name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Smith" autocomplete="family-name" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@company.co.uk" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+44 7700 900000" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Required</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select a service</option>
+                <option value="haulage-muck-away">Haulage &amp; Muck Away</option>
+                <option value="recycled-aggregates">Recycled Aggregates</option>
+                <option value="grab-hire">Grab Hire</option>
+                <option value="waste-disposal">Waste Disposal</option>
+                <option value="land-restoration">Landfill &amp; Land Restoration</option>
+                <option value="logistics">Logistics &amp; Fleet Management</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="Please describe your project — location, materials, volumes and any specific requirements…"></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="button">Submit Enquiry</button>
+              <span class="form-note">We aim to respond within one working day.</span>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       LOCATION STRIP
+       ============================================================ -->
+  <section class="location-strip">
+    <div class="location-inner">
+
+      <div class="location-text">
+        <span class="section-label on-dark">Find Us</span>
+        <h2>The Yard</h2>
+        <p>
+          Our yard and operations base is located in Watford, Hertfordshire —
+          well positioned within the South East road network for fast access to London
+          and construction sites across the region.
+        </p>
+        <div class="location-address">
+          <p>
+            10 Elton Way<br>
+            Watford<br>
+            WD25 8HA
+          </p>
+        </div>
+        <p style="margin-top:var(--space-6); font-size:var(--text-sm); color:rgba(255,255,255,0.6);">
+          <strong style="color:rgba(255,255,255,0.8);">Head Office:</strong> Units 3–4 Oaks Court, Warwick Road, Borehamwood, Herts, WD6 1GS
+        </p>
+      </div>
+
+      <div class="location-map">
+        <iframe
+          src="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA&output=embed&z=15"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kingscote Haulage — Yard, Watford"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="kingscotelogoclear2.png" alt="Kingscote Haulage" style="height:51px; width:auto;">
+        <p>Environmental haulage and waste management services for construction and industry across the South East of England. A Morrisroe Group company.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navigation</span>
+        <ul class="footer-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="group.html">The Group</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Contact</span>
+        <ul class="footer-links">
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-bottom:var(--space-1);">Head Office</li>
+          <li>Units 3–4 Oaks Court<br>Warwick Road<br>Borehamwood<br>Herts, WD6 1GS</li>
+          <li style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--color-grey-mid); margin-top:var(--space-4); margin-bottom:var(--space-1);">Yard</li>
+          <li><a href="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA" target="_blank" rel="noopener">10 Elton Way<br>Watford<br>WD25 8HA</a></li>
+          <li style="margin-top:var(--space-3);"><a href="tel:+442087314000">+44 (0)20 8731 4000</a></li>
+          <li><a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kingscote Haulage Ltd. A Morrisroe Group Company.</p>
+      <p>Registered in England & Wales</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var nav    = document.querySelector('.site-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var links  = document.querySelectorAll('.nav-links a');
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('nav-open');
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('nav-open');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('nav-open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
