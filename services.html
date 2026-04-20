@@ -3,178 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kingscote Haulage — Environmental Haulage & Waste Management</title>
+  <title>Services — Kingscote Haulage</title>
   <link rel="stylesheet" href="styles.css">
   <style>
 
-    /* ---- HERO ---- */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      background-image: url('kingscote_haulage2.png');
-      background-size: cover;
-      background-position: center top;
-      background-attachment: scroll;
-      overflow: hidden;
-      margin-top: 0;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0, 20, 50, 0.55) 0%,
-          rgba(0, 20, 50, 0.0) 18%
-        ),
-        linear-gradient(
-          to top,
-          rgba(0, 60, 110, 0.72) 0%,
-          rgba(0, 60, 110, 0.28) 50%,
-          rgba(0, 60, 110, 0.0) 100%
-        );
-      z-index: 1;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--color-blue-primary);
-      z-index: 3;
-    }
-
-    .hero-grid { display: none; }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--container-lg);
-      margin: 0 auto;
-      padding: 0 var(--space-8) 5rem;
-    }
-
-    .hero-label {
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      font-weight: 400;
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: var(--color-white);
-      margin-bottom: var(--space-6);
-      display: block;
-    }
-
-    .hero h1 {
-      color: var(--color-white);
-      max-width: 820px;
-      margin-bottom: var(--space-6);
-    }
-
-    .hero h1 em {
-      font-family: var(--font-sans);
-      font-style: normal;
-      color: rgba(255,255,255,0.75);
-      font-weight: 200;
-    }
-
-    .hero-desc {
-      color: rgba(255,255,255,0.9);
-      font-size: var(--text-md);
-      font-weight: 300;
-      max-width: 540px;
-      line-height: var(--leading-relaxed);
-      margin-bottom: var(--space-10);
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: var(--space-6);
-      flex-wrap: wrap;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: var(--space-6);
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-2);
-    }
-
-    .hero-scroll span {
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
-    }
-
-
-    /* ---- STATS BAR ---- */
-    .stats-bar {
-      background-color: var(--color-blue-primary);
-      padding: var(--space-8) 0;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: var(--container-lg);
-      margin: 0 auto;
-      padding: 0 var(--space-8);
-    }
-
-    .stat-item {
-      padding: var(--space-4) var(--space-6);
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .stat-item:last-child {
-      border-right: none;
-    }
-
-    .stat-number {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: var(--text-4xl);
-      font-weight: 200;
-      color: var(--color-white);
-      letter-spacing: -1px;
-      line-height: 1;
-      margin-bottom: var(--space-2);
-    }
-
-    .stat-label {
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      font-weight: 400;
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-    }
-
-
-    /* ---- SERVICES ---- */
+    /* ---- SERVICES GRID ---- */
     .services-section {
       padding: var(--space-20) 0;
     }
@@ -186,7 +19,7 @@
       background-color: var(--color-grey-light);
     }
 
-    /* Flip card wrapper — grid cell */
+    /* Flip card wrapper */
     .service-card-wrap {
       background-color: var(--color-white);
       perspective: 1200px;
@@ -302,85 +135,6 @@
     .card-back-cta:hover { color: var(--color-white); }
 
 
-    /* ---- ABOUT PREVIEW ---- */
-    .about-preview {
-      background-color: var(--color-blue-primary);
-      padding: var(--space-20) 0;
-    }
-
-    .about-preview-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-      max-width: var(--container-lg);
-      margin: 0 auto;
-      padding: 0 var(--space-8);
-    }
-
-    .about-text h2 {
-      color: var(--color-white);
-      margin-bottom: var(--space-6);
-    }
-
-    .about-text p {
-      color: rgba(255,255,255,0.65);
-      font-size: var(--text-md);
-      line-height: var(--leading-relaxed);
-      margin-bottom: var(--space-8);
-    }
-
-    .about-visual {
-      position: relative;
-      height: 460px;
-      background-image: url('kingscote_haulage.jpeg');
-      background-size: cover;
-      background-position: center;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .about-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0, 90, 145, 0.25) 0%,
-        rgba(0, 90, 145, 0.08) 55%,
-        rgba(0, 90, 145, 0.0) 100%
-      );
-      z-index: 1;
-    }
-
-    .about-visual-text {
-      position: relative;
-      z-index: 2;
-      padding: var(--space-10) var(--space-10);
-      border-top: none;
-      width: 100%;
-    }
-
-    .about-visual-text blockquote {
-      font-family: var(--font-sans);
-      font-style: normal;
-      font-weight: 300;
-      font-size: 1.12rem;
-      color: rgba(255,255,255,0.85);
-      margin: 0 0 var(--space-4);
-      line-height: var(--leading-relaxed);
-    }
-
-    .about-visual-text cite {
-      font-family: var(--font-label);
-      font-size: 0.6rem;
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      font-style: normal;
-    }
-
     /* ---- APPROACH ---- */
     .approach-section {
       padding: var(--space-20) 0;
@@ -391,7 +145,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-2);
-      margin-top: 0;
     }
 
     .approach-item {
@@ -415,32 +168,17 @@
 
     /* ---- RESPONSIVE ---- */
     @media (max-width: 991px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-preview-inner { grid-template-columns: 1fr; }
-      .about-visual { height: 300px; }
       .approach-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 767px) {
-      .hero-content { padding: 0 var(--space-6) 3.5rem; }
+      .services-section { padding: var(--space-12) 0; }
+      .approach-section { padding: var(--space-12) 0; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card-wrap,
       .service-card { min-height: 320px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .services-section { padding: var(--space-12) 0; }
-      .about-preview { padding: var(--space-12) 0; }
-      .about-preview-inner { gap: var(--space-8); }
-      .approach-section { padding: var(--space-12) 0; }
       .approach-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 479px) {
-      .hero-content { padding: 0 var(--space-4) 3rem; }
-      .stat-item { padding: var(--space-4); }
-      .stat-number { font-size: var(--text-3xl); }
     }
   </style>
 </head>
@@ -479,64 +217,28 @@
 
 
   <!-- ============================================================
-       HERO
+       PAGE HERO
        ============================================================ -->
-  <section class="hero">
-    <div class="hero-grid"></div>
-
-    <div class="hero-content">
-      <span class="hero-label">Environmental Haulage & Waste Management</span>
-      <h1>Moving Material<br><em>Responsibly</em></h1>
-      <p class="hero-desc">
-        Offering a comprehensive range of environmental haulage services at competitive rates.
-        Kingscote Haulage serves both Morrisroe Group companies and external clients across the South East.
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-hero-label">What We Do</span>
+      <h1>Our Services</h1>
+      <p class="hero-sub">
+        Comprehensive environmental haulage and waste management services — delivered
+        with Euro VI compliant vehicles and full carbon reporting across the South East.
       </p>
-      <div class="hero-actions">
-        <a href="contact.html" class="button">Request a Quote</a>
-        <a href="about.html" class="cta" style="font-size:var(--text-sm); padding: 10px 28px;">Our Services</a>
-      </div>
     </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  </header>
 
 
   <!-- ============================================================
-       STATS BAR
-       ============================================================ -->
-  <section class="stats-bar" aria-label="Company statistics">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number">32T</span>
-        <span class="stat-label">Gross Vehicle Weight</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">Euro VI</span>
-        <span class="stat-label">Compliant Fleet</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">6+</span>
-        <span class="stat-label">Service Streams</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">M1</span>
-        <span class="stat-label">Junction 2, Borehamwood</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       SERVICES
+       SERVICES GRID
        ============================================================ -->
   <section class="services-section">
     <div class="container">
       <div class="section-intro">
-        <span class="section-label">What We Do</span>
-        <h2>Our Services</h2>
+        <span class="section-label">Six Service Streams</span>
+        <h2>Click a card to learn more</h2>
         <p>
           Increased control over transportation and haulage enables us to improve site logistics
           and better manage our carbon footprint — for clients and Group companies alike.
@@ -703,39 +405,6 @@
 
 
   <!-- ============================================================
-       ABOUT PREVIEW (dark)
-       ============================================================ -->
-  <section class="about-preview">
-    <div class="about-preview-inner">
-
-      <div class="about-text">
-        <span class="section-label on-dark">About Kingscote</span>
-        <h2>Part of the Morrisroe Group</h2>
-        <p>
-          Kingscote Haulage was established to give the Morrisroe Group direct control over
-          transportation and environmental haulage. Operating from Junction 2 of the M1 in
-          Borehamwood, we serve both Group companies and a growing portfolio of external clients.
-        </p>
-        <p>
-          Our Euro VI compliant Scania tipper fleet and specialist operations team deliver a level
-          of service — and environmental accountability — that sets us apart.
-        </p>
-      </div>
-
-      <div class="about-visual">
-        <div class="about-visual-text">
-          <blockquote>
-            "Increased control over transportation enables us to improve site logistics and better manage our carbon footprint."
-          </blockquote>
-          <cite>Aiden Kelly — General Manager, Kingscote Haulage</cite>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
        APPROACH
        ============================================================ -->
   <section class="approach-section">
@@ -771,7 +440,7 @@
         <h2>Ready to talk?</h2>
         <p>We work across the South East and welcome enquiries from all sectors.</p>
       </div>
-      <a href="contact.html" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Get in Touch</a>
+      <a href="contact.html" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Get a Quote</a>
     </div>
   </section>
 
@@ -815,7 +484,7 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Kingscote Haulage Ltd. A Morrisroe Group Company.</p>
-      <p>Registered in England & Wales</p>
+      <p>Registered in England &amp; Wales</p>
     </div>
   </footer>
 
@@ -825,58 +494,20 @@
       var toggle = document.querySelector('.nav-toggle');
       var links  = document.querySelectorAll('.nav-links a');
 
-      // ---- Gradual transparent → white as user scrolls through hero ----
-      var fadeOver = window.innerHeight * 0.65; // fade completes at 65% of viewport height
-
-      function updateNav() {
-        if (nav.classList.contains('nav-open')) return;
-
-        var alpha  = Math.min(window.scrollY / fadeOver, 1);
-        var shadow = alpha > 0.85 ? '0 1px 0 rgba(0,0,0,0.08)' : 'none';
-
-        nav.style.backgroundColor = 'rgba(255,255,255,' + alpha + ')';
-        nav.style.boxShadow = shadow;
-
-        // Switch link/toggle colours at the midpoint
-        if (alpha < 0.5) {
-          nav.classList.add('nav-transparent');
-        } else {
-          nav.classList.remove('nav-transparent');
-        }
-      }
-
-      // Set initial transparent state
-      nav.style.backgroundColor = 'rgba(255,255,255,0)';
-      nav.style.boxShadow = 'none';
-      nav.classList.add('nav-transparent');
-
-      window.addEventListener('scroll', updateNav, { passive: true });
-
-      // ---- Mobile nav toggle ----
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
-        // Force white when menu opens; restore scroll state when it closes
-        if (nav.classList.contains('nav-open')) {
-          nav.style.backgroundColor = 'rgba(255,255,255,1)';
-          nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
-          nav.classList.remove('nav-transparent');
-        } else {
-          updateNav();
-        }
       });
 
       links.forEach(function(link) {
         link.addEventListener('click', function() {
           nav.classList.remove('nav-open');
-          updateNav();
         });
       });
 
       document.addEventListener('click', function(e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('nav-open');
-          updateNav();
         }
       });
     })();

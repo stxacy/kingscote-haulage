@@ -112,6 +112,11 @@ html { min-height: 100%; }
   to   { opacity: 1; }
 }
 
+@keyframes revealLTR {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
 body {
   margin: 0;
   min-height: 100%;
@@ -122,6 +127,37 @@ body {
   color: var(--color-body-text);
   background-color: var(--color-white);
   animation: pageIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+
+/* -------------------------------------------------------------
+   PAGE SPLASH OVERLAY
+   ------------------------------------------------------------- */
+.page-splash {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  z-index: var(--z-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.45s ease;
+}
+
+.page-splash.splash-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-splash .splash-logo {
+  clip-path: inset(0 100% 0 0);
+  animation: revealLTR 1.0s cubic-bezier(0.76, 0, 0.24, 1) 0.2s forwards;
+}
+
+.page-splash .splash-logo img {
+  height: 68px;
+  width: auto;
+  display: block;
 }
 
 img, video { max-width: 100%; display: block; }

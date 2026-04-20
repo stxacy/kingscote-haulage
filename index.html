@@ -52,12 +52,21 @@
   </div>
 
   <script>
+    // If the user has visited before, skip the click-to-enter and go straight to home
+    if (localStorage.getItem('kh_visited')) {
+      window.location.replace('home.html');
+    }
+
     document.addEventListener('click', leave);
     document.addEventListener('touchstart', leave);
 
     function leave() {
       document.removeEventListener('click', leave);
       document.removeEventListener('touchstart', leave);
+      // Mark as visited so future loads skip this splash
+      localStorage.setItem('kh_visited', '1');
+      // Tell the next page to skip its splash (coming straight from entry)
+      sessionStorage.setItem('kh_skip_splash', '1');
       document.body.classList.add('leaving');
       setTimeout(function() {
         window.location.href = 'home.html';

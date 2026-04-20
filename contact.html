@@ -261,6 +261,12 @@
 </head>
 <body>
 
+  <div class="page-splash" id="pageSplash">
+    <div class="splash-logo">
+      <img src="kingscotelogoclear2.png" alt="Kingscote Haulage">
+    </div>
+  </div>
+
   <!-- ============================================================
        NAVIGATION
        ============================================================ -->
@@ -274,9 +280,9 @@
       <ul class="nav-links">
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
         <li><a href="group.html">Group</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="nav-cta"><a href="contact.html">Get a Quote</a></li>
+        <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
       </ul>
 
       <button class="nav-toggle" aria-label="Menu">
@@ -497,6 +503,7 @@
         <ul class="footer-links">
           <li><a href="home.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
           <li><a href="group.html">The Group</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="contact.html">Get a Quote</a></li>
@@ -545,6 +552,23 @@
           nav.classList.remove('nav-open');
         }
       });
+    })();
+
+    // ---- Page splash ----
+    (function() {
+      var splash = document.getElementById('pageSplash');
+      if (!splash) return;
+      if (sessionStorage.getItem('kh_skip_splash')) {
+        sessionStorage.removeItem('kh_skip_splash');
+        splash.remove();
+        return;
+      }
+      setTimeout(function() {
+        splash.classList.add('splash-out');
+        splash.addEventListener('transitionend', function() {
+          splash.remove();
+        }, { once: true });
+      }, 1400);
     })();
   </script>
 </body>
