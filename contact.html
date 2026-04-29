@@ -285,7 +285,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="group.html">Group</a></li>
-        <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
+        <li class="nav-cta"><a href="contact.html" aria-current="page">Contact Us</a></li>
       </ul>
 
       <button class="nav-toggle" aria-label="Menu">
@@ -322,7 +322,7 @@
         <div class="contact-details">
           <span class="section-label" style="margin-bottom:var(--space-6);">Our Details</span>
 
-          <div class="contact-card">
+          <div class="contact-card" data-reveal>
             <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 3C12.5 3 8 7.5 8 13c0 8 10 20 10 20s10-12 10-20c0-5.5-4.5-10-10-10z"/>
@@ -337,7 +337,7 @@
             </div>
           </div>
 
-          <div class="contact-card">
+          <div class="contact-card" data-reveal data-delay="1">
             <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 7h6l3 7-3.5 2A18 18 0 0 0 22 27l2-3.5 7 3v6c-14 2-26-10-25-25.5z"/>
@@ -349,7 +349,7 @@
             </div>
           </div>
 
-          <div class="contact-card">
+          <div class="contact-card" data-reveal data-delay="2">
             <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="4" y="8" width="28" height="20" rx="2"/>
@@ -362,7 +362,7 @@
             </div>
           </div>
 
-          <div class="contact-card">
+          <div class="contact-card" data-reveal data-delay="3">
             <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="18" cy="18" r="14"/>
@@ -379,7 +379,7 @@
         </div>
 
         <!-- CONTACT FORM -->
-        <div class="contact-form-wrap">
+        <div class="contact-form-wrap" data-reveal>
           <div class="form-header">
             <span class="section-label">Send an Enquiry</span>
             <h2>Request a Quote</h2>
@@ -577,6 +577,16 @@
           splash.remove();
         }, { once: true });
       }, 1400);
+    })();
+
+    // ---- Scroll reveal ----
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
 </body>

@@ -7,159 +7,192 @@
   <link rel="stylesheet" href="styles.css">
   <style>
 
-    /* ---- SERVICES GRID ---- */
-    .services-section {
+    /* ---- ACCORDION SERVICES ---- */
+    .accordion-section {
       padding: var(--space-20) 0;
     }
 
-    .services-grid {
+    .srv-row {
+      border-top: 1px solid var(--color-grey-light);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .srv-row:last-child {
+      border-bottom: 1px solid var(--color-grey-light);
+    }
+
+    .srv-row:hover:not(.open) {
+      background-color: rgba(0, 156, 222, 0.03);
+    }
+
+    .srv-row.open {
+      background-color: var(--color-blue-light);
+    }
+
+    .srv-row-header {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 84px 1fr auto;
+      gap: var(--space-8);
+      align-items: center;
+      padding: var(--space-8) var(--space-8);
+      max-width: var(--container-lg);
+      margin: 0 auto;
+    }
+
+    .srv-num {
+      font-family: var(--font-sans);
+      font-size: 3rem;
+      font-weight: 200;
+      color: rgba(0, 156, 222, 0.14);
+      line-height: 1;
+      transition: color 0.35s ease;
+    }
+
+    .srv-row.open .srv-num {
+      color: var(--color-blue-primary);
+    }
+
+    .srv-text h3 {
+      color: var(--color-navy-dark);
+      font-size: var(--text-xl);
+      margin: 0 0 var(--space-2);
+      transition: color 0.25s ease;
+    }
+
+    .srv-row.open .srv-text h3 {
+      color: var(--color-navy-dark);
+    }
+
+    .srv-tagline {
+      color: var(--color-grey-mid);
+      font-size: var(--text-sm);
+      font-weight: 300;
+      margin: 0;
+      max-height: 20px;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity 0.2s ease, max-height 0.2s ease;
+    }
+
+    .srv-row.open .srv-tagline {
+      opacity: 0;
+      max-height: 0;
+    }
+
+    .srv-toggle {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--color-grey-light);
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-grey-mid);
+      transition: background-color 0.35s ease, border-color 0.35s ease,
+                  color 0.35s ease, transform 0.35s ease;
+    }
+
+    .srv-row.open .srv-toggle {
+      background: var(--color-blue-primary);
+      border-color: var(--color-blue-primary);
+      color: var(--color-white);
+      transform: rotate(45deg);
+    }
+
+    .srv-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .srv-row.open .srv-body {
+      max-height: 340px;
+    }
+
+    .srv-body-inner {
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8) var(--space-10);
+      padding-left: calc(84px + var(--space-8) + var(--space-8));
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .srv-body-inner p {
+      color: var(--color-body-text);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+
+    .srv-cta {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-blue-primary);
+      white-space: nowrap;
+      transition: var(--transition-colour);
+      padding-top: var(--space-1);
+      display: inline-block;
+    }
+
+    .srv-cta:hover {
+      color: var(--color-navy-dark);
+    }
+
+
+    /* ---- PROCESS SECTION ---- */
+    .process-section {
+      padding: var(--space-20) 0;
+      background-color: var(--color-blue-light);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background-color: var(--color-grey-light);
     }
 
-    /* Flip card wrapper */
-    .service-card-wrap {
+    .process-step {
       background-color: var(--color-white);
-      perspective: 1200px;
-      cursor: pointer;
-      min-height: 380px;
-    }
-
-    .service-card {
+      padding: var(--space-10) var(--space-8);
       position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      transform-style: preserve-3d;
-      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .service-card-wrap.flipped .service-card {
-      transform: rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      padding: var(--space-10) var(--space-8);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card-front {
-      background-color: var(--color-white);
-      border-bottom: 3px solid transparent;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .service-card-wrap:not(.flipped):hover .card-front {
-      background-color: var(--color-blue-light);
-      border-bottom-color: var(--color-blue-primary);
-    }
-
-    .card-back {
-      background-color: #0077a8;
-      transform: rotateY(180deg);
-      border-bottom: 3px solid rgba(255,255,255,0.3);
-    }
-
-    .service-number {
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      letter-spacing: var(--tracking-widest);
-      color: var(--color-grey-mid);
-      margin-bottom: var(--space-6);
+    .process-step::before {
+      content: '';
       display: block;
-    }
-
-    .service-icon-wrap {
-      width: 44px;
-      height: 44px;
+      width: 28px;
+      height: 3px;
+      background-color: var(--color-blue-primary);
       margin-bottom: var(--space-6);
-      color: var(--color-blue-primary);
     }
 
-    .card-front h3 {
-      color: var(--color-navy-dark);
-      font-size: var(--text-lg);
+    .process-step-num {
+      font-family: var(--font-sans);
+      font-size: 3.5rem;
+      font-weight: 200;
+      color: rgba(0, 156, 222, 0.1);
+      line-height: 1;
       margin-bottom: var(--space-4);
-    }
-
-    .card-front > p {
-      color: var(--color-body-text);
-      line-height: var(--leading-relaxed);
-      font-size: var(--text-sm);
-      flex: 1;
-    }
-
-    .flip-hint {
-      margin-top: var(--space-8);
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: var(--color-grey-mid);
-    }
-
-    .card-back h3 {
-      color: var(--color-white);
-      font-size: var(--text-base);
-      margin-bottom: var(--space-6);
-    }
-
-    .card-back > p {
-      color: rgba(255,255,255,0.65);
-      font-size: var(--text-sm);
-      line-height: var(--leading-relaxed);
-      flex: 1;
-    }
-
-    .card-back-cta {
       display: block;
-      margin-top: var(--space-8);
-      padding-top: var(--space-6);
-      border-top: 1px solid rgba(255,255,255,0.2);
-      font-family: var(--font-label);
-      font-size: var(--text-xs);
-      letter-spacing: var(--tracking-widest);
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
-      transition: color 0.2s ease;
     }
 
-    .card-back-cta:hover { color: var(--color-white); }
-
-
-    /* ---- APPROACH ---- */
-    .approach-section {
-      padding: var(--space-20) 0;
-      background-color: var(--color-blue-light);
-    }
-
-    .approach-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-2);
-    }
-
-    .approach-item {
-      background-color: var(--color-white);
-      padding: var(--space-10) var(--space-8);
-      border-top: 3px solid var(--color-blue-primary);
-    }
-
-    .approach-item h3 {
+    .process-step h3 {
       color: var(--color-navy-dark);
       font-size: var(--text-base);
       margin-bottom: var(--space-4);
     }
 
-    .approach-item p {
+    .process-step p {
       color: var(--color-body-text);
       font-size: var(--text-sm);
       line-height: var(--leading-relaxed);
@@ -168,26 +201,35 @@
 
     /* ---- RESPONSIVE ---- */
     @media (max-width: 991px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .approach-grid { grid-template-columns: 1fr 1fr; }
+      .srv-row-header { grid-template-columns: 60px 1fr auto; gap: var(--space-6); }
+      .srv-body-inner { padding-left: calc(60px + var(--space-6) + var(--space-8)); }
+      .srv-num { font-size: 2.5rem; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 767px) {
-      .services-section { padding: var(--space-12) 0; }
-      .approach-section { padding: var(--space-12) 0; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card-wrap,
-      .service-card { min-height: 420px; }
-      .card-front,
-      .card-back { padding: var(--space-6) var(--space-6); }
-      .approach-grid { grid-template-columns: 1fr; }
+      .accordion-section { padding: var(--space-12) 0; }
+      .process-section { padding: var(--space-12) 0; }
+      .srv-row-header {
+        grid-template-columns: 48px 1fr auto;
+        gap: var(--space-4);
+        padding: var(--space-6) var(--space-4);
+      }
+      .srv-body-inner {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+        padding-bottom: var(--space-8);
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+      .srv-num { font-size: 2rem; }
+      .srv-text h3 { font-size: var(--text-lg); }
+      .srv-row.open .srv-body { max-height: 600px; }
+      .srv-tagline { display: none; }
     }
 
     @media (max-width: 479px) {
-      .service-card-wrap,
-      .service-card { min-height: 460px; }
-      .card-front,
-      .card-back { padding: var(--space-5) var(--space-4); }
+      .process-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -212,7 +254,7 @@
       <ul class="nav-links">
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
         <li><a href="group.html">Group</a></li>
         <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
       </ul>
@@ -241,200 +283,194 @@
 
 
   <!-- ============================================================
-       SERVICES GRID
+       SERVICES ACCORDION
        ============================================================ -->
-  <section class="services-section">
+  <section class="accordion-section">
     <div class="container">
-      <div class="section-intro">
+      <div class="section-intro" data-reveal>
         <span class="section-label">Six Service Streams</span>
-        <h2>Click a card to learn more</h2>
+        <h2>Select a service to learn more</h2>
         <p>
-          Increased control over transportation and haulage enables us to improve site logistics
-          and better manage our carbon footprint — for clients and Group companies alike.
+          Increased control over transportation and haulage enables us to improve site
+          logistics and better manage our carbon footprint — for clients and Group companies alike.
         </p>
       </div>
     </div>
 
     <div class="container container--wide" style="padding:0;">
-      <div class="services-grid">
 
-        <!-- 01 Haulage & Muck Away -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">01</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="26" width="36" height="10" rx="1"/>
-                  <path d="M4 26l6-12h20l6 12"/>
-                  <circle cx="12" cy="38" r="4"/><circle cx="32" cy="38" r="4"/>
-                  <line x1="12" y1="26" x2="12" y2="14"/><line x1="22" y1="26" x2="22" y2="14"/>
-                  <line x1="32" y1="26" x2="32" y2="14"/>
-                </svg>
-              </div>
-              <h3>Haulage & Muck Away</h3>
-              <p>Removal of waste materials including hazardous soils and clean inert waste, with full testing and classification services across the South East.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Haulage & Muck Away</h3>
-              <p>Kingscote Haulage removes waste materials from site. This includes moving soils and materials classified as hazardous, which may harm the environment or human health and require an extra duty of care. Clean inert waste, which does not come with such risks, as well as non-hazardous materials that may have low levels of contamination are also efficiently removed. The team carry out necessary testing to classify materials according to each site's requirements and can subsequently record and validate the removal of contaminated materials.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
+      <!-- 01 -->
+      <div class="srv-row" data-reveal>
+        <div class="srv-row-header">
+          <span class="srv-num">01</span>
+          <div class="srv-text">
+            <h3>Haulage & Muck Away</h3>
+            <p class="srv-tagline">Hazardous &amp; inert waste removal across the South East</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>Kingscote Haulage removes waste materials from site. This includes moving soils and materials classified as hazardous, which may harm the environment or human health and require an extra duty of care. Clean inert waste, as well as non-hazardous materials that may have low levels of contamination, are also efficiently removed. The team carry out necessary testing to classify materials according to each site's requirements and can subsequently record and validate the removal of contaminated materials.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
           </div>
         </div>
-
-        <!-- 02 Recycled Aggregates -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">02</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="22" cy="22" r="16"/>
-                  <path d="M14 22c0-4.4 3.6-8 8-8"/>
-                  <path d="M30 22c0 4.4-3.6 8-8 8"/>
-                  <path d="M10 18l4 4-4 4"/><path d="M34 26l-4-4 4-4"/>
-                </svg>
-              </div>
-              <h3>Recycled Aggregates</h3>
-              <p>Crushing and screening services producing recycled aggregates graded to specification — 6F1, 6F5, and Type 1–3 — for future site use.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Recycled Aggregates</h3>
-              <p>The team provide crushing and screening services to produce recycled aggregates for future use, grading them to specifications, such as 6f1, 6f5 and types 1 to 3, that are suitable for individual site requirements. This helps reduce the amount of waste being disposed of in landfills, cutting both costs and environmental impacts.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 03 Grab Hire -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">03</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="28" width="36" height="8" rx="1"/>
-                  <path d="M10 28V16h14"/>
-                  <path d="M24 16l8 8-8 8"/>
-                  <line x1="10" y1="20" x2="20" y2="20"/>
-                </svg>
-              </div>
-              <h3>Grab Hire</h3>
-              <p>Day work and haulage solutions using Euro VI compliant Scania tipper trucks, servicing both accessible and difficult-to-reach areas.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Grab Hire</h3>
-              <p>Grab lorries can be hired for day work, muck away and haulage, providing an efficient and cost-effective waste removal solution for both accessible and inaccessible areas. Each of our trucks is fitted with up-to-date technology for the highest levels of safety.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 04 Waste Disposal -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">04</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="8" y="14" width="28" height="24" rx="1"/>
-                  <path d="M6 14h32M16 14v-4h12v4"/>
-                  <line x1="16" y1="22" x2="16" y2="32"/><line x1="22" y1="22" x2="22" y2="32"/><line x1="28" y1="22" x2="28" y2="32"/>
-                </svg>
-              </div>
-              <h3>Waste Disposal</h3>
-              <p>Skips and roll-on/roll-off containers ranging from 6 to 40 cubic yards, providing flexible waste management solutions for all project scales.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Waste Disposal</h3>
-              <p>A variety of skips and roll on, roll off containers, which come in larger sizes for bigger waste volumes, can also be supplied to sites to assist with waste removal. The team's container sizes range from six to 40 cubic yards.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 05 Landfill & Restoration -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">05</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 34c6-8 12-4 18-10s10-10 18-10"/>
-                  <path d="M4 38h36"/>
-                  <circle cx="12" cy="14" r="4"/>
-                  <path d="M12 10V6M8.5 11.5L5 8M15.5 11.5L19 8"/>
-                </svg>
-              </div>
-              <h3>Landfill & Land Restoration</h3>
-              <p>Farm restoration, noise bunds, quarry and landfill site reinstatement across the South East — returning land to productive use.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Landfill & Land Restoration</h3>
-              <p>Additional services such as farm land restoration, construction of noise bunds and the reinstatement and restoration of old quarries and landfill sites in the South East are all catered for. Any EA permits along with exemptions and planning permissions can all be efficiently obtained by the team.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 06 Logistics & Fleet Control -->
-        <div class="service-card-wrap">
-          <div class="service-card">
-            <div class="card-front">
-              <span class="service-number">06</span>
-              <div class="service-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="22" cy="22" r="16"/>
-                  <circle cx="22" cy="22" r="4"/>
-                  <path d="M22 6v4M22 34v4M6 22h4M34 22h4"/>
-                  <path d="M10.5 10.5l2.8 2.8M30.7 30.7l2.8 2.8M10.5 33.5l2.8-2.8M30.7 13.3l2.8-2.8"/>
-                </svg>
-              </div>
-              <h3>Logistics & Fleet Control</h3>
-              <p>Dedicated logistics management to improve site efficiency, reduce haulage costs and tighten carbon reporting across the full supply chain.</p>
-              <span class="flip-hint">Learn more →</span>
-            </div>
-            <div class="card-back">
-              <h3>Logistics & Fleet Control</h3>
-              <p>Integrated logistics management embedded within your site team. We schedule load movements, reduce vehicle idle time, manage subcontractor hauliers and provide itemised carbon and cost reports across every movement — giving you full visibility and control of your haulage programme.</p>
-              <a href="contact.html" class="card-back-cta">Request a Quote →</a>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- 02 -->
+      <div class="srv-row" data-reveal data-delay="1">
+        <div class="srv-row-header">
+          <span class="srv-num">02</span>
+          <div class="srv-text">
+            <h3>Recycled Aggregates</h3>
+            <p class="srv-tagline">Crushing &amp; screening to specification — 6F1, 6F5, Type 1–3</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>The team provide crushing and screening services to produce recycled aggregates for future use, grading them to specifications — such as 6F1, 6F5 and Types 1 to 3 — suitable for individual site requirements. This helps reduce the amount of waste being disposed of in landfills, cutting both costs and environmental impact.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="srv-row" data-reveal data-delay="2">
+        <div class="srv-row-header">
+          <span class="srv-num">03</span>
+          <div class="srv-text">
+            <h3>Grab Hire</h3>
+            <p class="srv-tagline">Day work &amp; haulage for accessible and difficult-to-reach areas</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>Grab lorries can be hired for day work, muck away and haulage, providing an efficient and cost-effective waste removal solution for both accessible and inaccessible areas. Each of our trucks is fitted with up-to-date technology for the highest levels of safety, and operated by experienced drivers familiar with complex construction site environments.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="srv-row" data-reveal>
+        <div class="srv-row-header">
+          <span class="srv-num">04</span>
+          <div class="srv-text">
+            <h3>Waste Disposal</h3>
+            <p class="srv-tagline">Skips &amp; roll-on/roll-off containers from 6 to 40 cubic yards</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>A variety of skips and roll-on, roll-off containers — which come in larger sizes for bigger waste volumes — can be supplied to sites to assist with waste removal. Container sizes range from six to 40 cubic yards, providing a flexible solution for projects of any scale and duration.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="srv-row" data-reveal data-delay="1">
+        <div class="srv-row-header">
+          <span class="srv-num">05</span>
+          <div class="srv-text">
+            <h3>Landfill & Land Restoration</h3>
+            <p class="srv-tagline">Farm restoration, noise bunds &amp; quarry reinstatement</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>Additional services including farm land restoration, construction of noise bunds, and the reinstatement and restoration of old quarries and landfill sites across the South East are all catered for. EA permits, exemptions and planning permissions can all be efficiently obtained by the team, ensuring compliance from the outset.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="srv-row" data-reveal data-delay="2">
+        <div class="srv-row-header">
+          <span class="srv-num">06</span>
+          <div class="srv-text">
+            <h3>Logistics & Fleet Control</h3>
+            <p class="srv-tagline">Embedded logistics management — movements, costs &amp; carbon reporting</p>
+          </div>
+          <button class="srv-toggle" aria-label="Expand" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="srv-body" aria-hidden="true">
+          <div class="srv-body-inner">
+            <p>Integrated logistics management embedded within your site team. We schedule load movements, reduce vehicle idle time, manage subcontractor hauliers and provide itemised carbon and cost reports across every movement — giving you full visibility and control of your haulage programme without the overhead of managing it internally.</p>
+            <a href="contact.html" class="srv-cta">Request a Quote →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
 
   <!-- ============================================================
-       APPROACH
+       PROCESS SECTION
        ============================================================ -->
-  <section class="approach-section">
+  <section class="process-section">
     <div class="container">
-      <div class="section-intro">
-        <span class="section-label">Our Approach</span>
-        <h2>How We Work</h2>
+      <div class="section-intro" data-reveal>
+        <span class="section-label">How We Work</span>
+        <h2>The Process</h2>
+        <p>From first contact to project completion — a straightforward, transparent process built around your programme.</p>
       </div>
-      <div class="approach-grid">
-        <div class="approach-item">
-          <h3>Environmentally Led</h3>
-          <p>Our Euro VI fleet sets a benchmark for clean haulage. We track carbon output per movement and provide clients with full environmental reporting.</p>
+      <div class="process-steps">
+
+        <div class="process-step" data-reveal>
+          <span class="process-step-num">01</span>
+          <h3>Initial Enquiry</h3>
+          <p>Contact us with your project details — location, material types, estimated volumes and timescales. We'll confirm availability and arrange a site visit.</p>
         </div>
-        <div class="approach-item">
-          <h3>Competitive Rates</h3>
-          <p>Efficiency in operations translates directly to competitive pricing. We offer day rates, contract rates and bespoke project pricing.</p>
+
+        <div class="process-step" data-reveal data-delay="1">
+          <span class="process-step-num">02</span>
+          <h3>Site Assessment</h3>
+          <p>We assess access, material classification and logistical requirements. Where required, we carry out soil testing and prepare documentation for regulatory compliance.</p>
         </div>
-        <div class="approach-item">
-          <h3>Proven Logistics</h3>
-          <p>With deep roots in the Morrisroe Group, we understand construction logistics from both the site and haulier perspective — no learning curve.</p>
+
+        <div class="process-step" data-reveal data-delay="2">
+          <span class="process-step-num">03</span>
+          <h3>Service Delivery</h3>
+          <p>Our Euro VI Scania fleet is mobilised to programme. Fleet movements are tracked in real time, with dedicated logistics management throughout the project.</p>
         </div>
+
+        <div class="process-step" data-reveal data-delay="3">
+          <span class="process-step-num">04</span>
+          <h3>Reporting</h3>
+          <p>On completion we provide full carbon and cost reports for every movement, along with any required waste transfer documentation and regulatory records.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -526,10 +562,24 @@
       });
     })();
 
-    // ---- Service card flip ----
-    document.querySelectorAll('.service-card-wrap').forEach(function(wrap) {
-      wrap.addEventListener('click', function() {
-        this.classList.toggle('flipped');
+    // ---- Service accordion ----
+    document.querySelectorAll('.srv-row').forEach(function(row) {
+      row.querySelector('.srv-row-header').addEventListener('click', function() {
+        var isOpen = row.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.srv-row.open').forEach(function(r) {
+          r.classList.remove('open');
+          r.querySelector('.srv-toggle').setAttribute('aria-expanded', 'false');
+          r.querySelector('.srv-body').setAttribute('aria-hidden', 'true');
+        });
+
+        // Open clicked if it wasn't already open
+        if (!isOpen) {
+          row.classList.add('open');
+          row.querySelector('.srv-toggle').setAttribute('aria-expanded', 'true');
+          row.querySelector('.srv-body').setAttribute('aria-hidden', 'false');
+        }
       });
     });
 
@@ -548,6 +598,16 @@
           splash.remove();
         }, { once: true });
       }, 1400);
+    })();
+
+    // ---- Scroll reveal ----
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
 </body>

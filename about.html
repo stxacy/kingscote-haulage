@@ -343,7 +343,7 @@
 
       <ul class="nav-links">
         <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="group.html">Group</a></li>
         <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
@@ -379,7 +379,7 @@
     <div class="container">
       <div class="story-inner">
 
-        <div class="story-text">
+        <div class="story-text" data-reveal>
           <span class="section-label">Our Story</span>
           <h2>Built to Deliver</h2>
           <p>
@@ -399,7 +399,7 @@
           </p>
         </div>
 
-        <div class="story-aside">
+        <div class="story-aside" data-reveal data-delay="1">
           <div class="story-highlight">
             <h3>Part of the Morrisroe Group</h3>
             <p>
@@ -453,22 +453,22 @@
     </div>
     <div class="container container--wide" style="padding:0;">
       <div class="values-grid">
-        <div class="value-item">
+        <div class="value-item" data-reveal>
           <span class="value-number">01</span>
           <h3>Environmental Responsibility</h3>
           <p>We track and report on carbon per movement and invest in the cleanest available technology to minimise environmental impact.</p>
         </div>
-        <div class="value-item">
+        <div class="value-item" data-reveal data-delay="1">
           <span class="value-number">02</span>
           <h3>Operational Reliability</h3>
           <p>Construction programmes depend on logistics. We deliver on time, every time — with contingency built in at every stage.</p>
         </div>
-        <div class="value-item">
+        <div class="value-item" data-reveal data-delay="2">
           <span class="value-number">03</span>
           <h3>Transparent Pricing</h3>
           <p>No hidden costs, no surprises. We build trusted long-term relationships with clients through honest, competitive pricing.</p>
         </div>
-        <div class="value-item">
+        <div class="value-item" data-reveal data-delay="3">
           <span class="value-number">04</span>
           <h3>Safety First</h3>
           <p>Our drivers and operations team follow rigorous safety protocols. Every vehicle, every load and every site is managed to the highest standards.</p>
@@ -485,7 +485,7 @@
     <div class="container">
       <div class="fleet-inner">
 
-        <div class="fleet-visual">
+        <div class="fleet-visual" data-reveal>
           <div class="fleet-visual-inner" aria-hidden="true">
             <span class="big">Euro</span>
             <span class="big">VI</span>
@@ -493,7 +493,7 @@
           </div>
         </div>
 
-        <div class="fleet-text">
+        <div class="fleet-text" data-reveal data-delay="1">
           <span class="section-label">Our Fleet</span>
           <h2>Built for the Job</h2>
           <p>
@@ -551,7 +551,7 @@
       </div>
       <div class="team-grid">
 
-        <div class="team-card">
+        <div class="team-card" data-reveal>
           <div class="team-avatar">
             <img src="aiden-kelly.jpg" alt="Aiden Kelly — General Manager" style="object-position: center 18%;">
           </div>
@@ -566,7 +566,7 @@
           </div>
         </div>
 
-        <div class="team-card">
+        <div class="team-card" data-reveal data-delay="1">
           <div class="team-avatar">
             <img src="jamie-kelly.jpg" alt="Jamie Kelly — Operations Manager" style="object-position: center 12%;">
           </div>
@@ -687,6 +687,16 @@
           splash.remove();
         }, { once: true });
       }, 1400);
+    })();
+
+    // ---- Scroll reveal ----
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
 </body>

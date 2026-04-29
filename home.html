@@ -469,7 +469,7 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="home.html" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="group.html">Group</a></li>
@@ -515,19 +515,19 @@
        ============================================================ -->
   <section class="stats-bar" aria-label="Company statistics">
     <div class="stats-grid">
-      <div class="stat-item">
+      <div class="stat-item" data-reveal>
         <span class="stat-number">32T</span>
         <span class="stat-label">Gross Vehicle Weight</span>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal data-delay="1">
         <span class="stat-number">Euro VI</span>
         <span class="stat-label">Compliant Fleet</span>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal data-delay="2">
         <span class="stat-number">6+</span>
         <span class="stat-label">Service Streams</span>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-reveal data-delay="3">
         <span class="stat-number">M1</span>
         <span class="stat-label">Junction 2, Borehamwood</span>
       </div>
@@ -540,7 +540,7 @@
        ============================================================ -->
   <section class="services-section">
     <div class="container">
-      <div class="section-intro">
+      <div class="section-intro" data-reveal>
         <span class="section-label">What We Do</span>
         <h2>Our Services</h2>
         <p>
@@ -554,7 +554,7 @@
       <div class="services-grid">
 
         <!-- 01 Haulage & Muck Away -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal>
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">01</span>
@@ -580,7 +580,7 @@
         </div>
 
         <!-- 02 Recycled Aggregates -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal data-delay="1">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">02</span>
@@ -605,7 +605,7 @@
         </div>
 
         <!-- 03 Grab Hire -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal data-delay="2">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">03</span>
@@ -630,7 +630,7 @@
         </div>
 
         <!-- 04 Waste Disposal -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal>
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">04</span>
@@ -654,7 +654,7 @@
         </div>
 
         <!-- 05 Landfill & Restoration -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal data-delay="1">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">05</span>
@@ -679,7 +679,7 @@
         </div>
 
         <!-- 06 Logistics & Fleet Control -->
-        <div class="service-card-wrap">
+        <div class="service-card-wrap" data-reveal data-delay="2">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">06</span>
@@ -714,7 +714,7 @@
   <section class="about-preview">
     <div class="about-preview-inner">
 
-      <div class="about-text">
+      <div class="about-text" data-reveal>
         <span class="section-label on-dark">About Kingscote</span>
         <h2>Part of the Morrisroe Group</h2>
         <p>
@@ -728,7 +728,7 @@
         </p>
       </div>
 
-      <div class="about-visual">
+      <div class="about-visual" data-reveal data-delay="1">
         <div class="about-visual-text">
           <blockquote>
             "Increased control over transportation enables us to improve site logistics and better manage our carbon footprint."
@@ -751,15 +751,15 @@
         <h2>How We Work</h2>
       </div>
       <div class="approach-grid">
-        <div class="approach-item">
+        <div class="approach-item" data-reveal>
           <h3>Environmentally Led</h3>
           <p>Our Euro VI fleet sets a benchmark for clean haulage. We track carbon output per movement and provide clients with full environmental reporting.</p>
         </div>
-        <div class="approach-item">
+        <div class="approach-item" data-reveal data-delay="1">
           <h3>Competitive Rates</h3>
           <p>Efficiency in operations translates directly to competitive pricing. We offer day rates, contract rates and bespoke project pricing.</p>
         </div>
-        <div class="approach-item">
+        <div class="approach-item" data-reveal data-delay="2">
           <h3>Proven Logistics</h3>
           <p>With deep roots in the Morrisroe Group, we understand construction logistics from both the site and haulier perspective — no learning curve.</p>
         </div>
@@ -914,6 +914,16 @@
           splash.remove();
         }, { once: true });
       }, 1400);
+    })();
+
+    // ---- Scroll reveal ----
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
 </body>

@@ -131,7 +131,7 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="group.html">Group</a></li>
+        <li><a href="group.html" aria-current="page">Group</a></li>
         <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
       </ul>
 
@@ -167,7 +167,7 @@
       <div class="group-grid">
 
         <!-- MORRISROE -->
-        <div class="group-card">
+        <div class="group-card" data-reveal>
           <span class="group-card-category">Structures</span>
           <h3 class="group-card-name">Morrisroe</h3>
           <div class="group-card-divider"></div>
@@ -187,7 +187,7 @@
         </div>
 
         <!-- MORRISROE DEMOLITION -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="1">
           <span class="group-card-category">Demolition</span>
           <h3 class="group-card-name">Morrisroe Demolition</h3>
           <div class="group-card-divider"></div>
@@ -207,7 +207,7 @@
         </div>
 
         <!-- KINGSCOTE PLANT -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="2">
           <span class="group-card-category">Plant</span>
           <h3 class="group-card-name">Kingscote Plant</h3>
           <div class="group-card-divider"></div>
@@ -227,7 +227,7 @@
         </div>
 
         <!-- KINGSCOTE DESIGN -->
-        <div class="group-card">
+        <div class="group-card" data-reveal>
           <span class="group-card-category">Design</span>
           <h3 class="group-card-name">Kingscote Design</h3>
           <div class="group-card-divider"></div>
@@ -248,7 +248,7 @@
         </div>
 
         <!-- OSS PILING -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="1">
           <span class="group-card-category">Piling</span>
           <h3 class="group-card-name">OSS Piling</h3>
           <div class="group-card-divider"></div>
@@ -275,7 +275,7 @@
         </div>
 
         <!-- KINGSCOTE POST TENSIONING -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="2">
           <span class="group-card-category">Post Tensioning</span>
           <h3 class="group-card-name">Kingscote Post Tensioning</h3>
           <div class="group-card-divider"></div>
@@ -295,7 +295,7 @@
         </div>
 
         <!-- HOUSTON COX -->
-        <div class="group-card">
+        <div class="group-card" data-reveal>
           <span class="group-card-category">Joinery</span>
           <h3 class="group-card-name">Houston Cox</h3>
           <div class="group-card-divider"></div>
@@ -322,7 +322,7 @@
         </div>
 
         <!-- KINGSCOTE HAULAGE -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="1">
           <span class="group-card-category">Environmental Haulage</span>
           <h3 class="group-card-name">Kingscote Haulage</h3>
           <div class="group-card-divider"></div>
@@ -342,7 +342,7 @@
         </div>
 
         <!-- PIPER JOINERY -->
-        <div class="group-card">
+        <div class="group-card" data-reveal data-delay="2">
           <span class="group-card-category">Specialist Joinery</span>
           <h3 class="group-card-name">Piper Joinery</h3>
           <div class="group-card-divider"></div>
@@ -474,6 +474,16 @@
           splash.remove();
         }, { once: true });
       }, 1400);
+    })();
+
+    // ---- Scroll reveal ----
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
 
