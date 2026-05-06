@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>About Us — Kingscote Haulage</title>
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -657,6 +657,9 @@
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
+        if (nav.classList.contains('nav-open')) {
+          nav.classList.remove('nav-hidden');
+        }
       });
 
       links.forEach(function(link) {
@@ -670,6 +673,20 @@
           nav.classList.remove('nav-open');
         }
       });
+
+      // ---- Hide/show nav on scroll direction (CSS gate: ≤991px only) ----
+      var lastY = window.scrollY;
+      var navH  = nav.offsetHeight;
+      window.addEventListener('scroll', function() {
+        if (nav.classList.contains('nav-open')) { lastY = window.scrollY; return; }
+        var y = window.scrollY;
+        if (y > lastY && y > navH) {
+          nav.classList.add('nav-hidden');
+        } else if (y < lastY) {
+          nav.classList.remove('nav-hidden');
+        }
+        lastY = y;
+      }, { passive: true });
     })();
 
     // ---- Page splash ----

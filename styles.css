@@ -355,7 +355,21 @@ em { font-family: var(--font-serif); }
   background-color: var(--color-white);
   padding: var(--space-4) 0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.08);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Notched device safe-area */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .site-nav {
+    padding-top: calc(var(--space-4) + env(safe-area-inset-top));
+  }
+}
+
+/* Hide on scroll-down — mobile & tablet only */
+@media (max-width: 991px) {
+  .site-nav.nav-hidden:not(.nav-open) {
+    transform: translateY(-100%);
+  }
 }
 
 /* Transparent state — used on home hero */

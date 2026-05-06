@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Kingscote Haulage — Environmental Haulage & Waste Management</title>
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -499,7 +499,7 @@
       </p>
       <div class="hero-actions">
         <a href="contact.html" class="button">Request a Quote</a>
-        <a href="about.html" class="cta" style="font-size:var(--text-sm); padding: 10px 28px;">Our Services</a>
+        <a href="services.html" class="cta" style="font-size:var(--text-sm); padding: 10px 28px;">Our Services</a>
       </div>
     </div>
 
@@ -837,23 +837,32 @@
       var links  = document.querySelectorAll('.nav-links a');
 
       // ---- Gradual transparent → white as user scrolls through hero ----
-      var fadeOver = window.innerHeight * 0.65; // fade completes at 65% of viewport height
+      var fadeOver    = window.innerHeight * 0.65;
+      var lastScrollY = window.scrollY;
 
       function updateNav() {
-        if (nav.classList.contains('nav-open')) return;
+        if (nav.classList.contains('nav-open')) { lastScrollY = window.scrollY; return; }
 
-        var alpha  = Math.min(window.scrollY / fadeOver, 1);
-        var shadow = alpha > 0.85 ? '0 1px 0 rgba(0,0,0,0.08)' : 'none';
+        var currentY = window.scrollY;
+        var alpha    = Math.min(currentY / fadeOver, 1);
+        var shadow   = alpha > 0.85 ? '0 1px 0 rgba(0,0,0,0.08)' : 'none';
 
         nav.style.backgroundColor = 'rgba(255,255,255,' + alpha + ')';
         nav.style.boxShadow = shadow;
 
-        // Switch link/toggle colours at the midpoint
         if (alpha < 0.5) {
           nav.classList.add('nav-transparent');
         } else {
           nav.classList.remove('nav-transparent');
         }
+
+        // Hide/show on scroll direction (CSS gate: ≤991px only)
+        if (currentY > lastScrollY && currentY > nav.offsetHeight) {
+          nav.classList.add('nav-hidden');
+        } else if (currentY < lastScrollY) {
+          nav.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentY;
       }
 
       // Set initial transparent state
@@ -867,11 +876,11 @@
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
-        // Force white when menu opens; restore scroll state when it closes
         if (nav.classList.contains('nav-open')) {
           nav.style.backgroundColor = 'rgba(255,255,255,1)';
           nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
           nav.classList.remove('nav-transparent');
+          nav.classList.remove('nav-hidden');
         } else {
           updateNav();
         }
