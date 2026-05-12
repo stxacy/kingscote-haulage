@@ -54,7 +54,7 @@
   <script>
     // If the user has visited before, skip the click-to-enter and go straight to home
     if (localStorage.getItem('kh_visited')) {
-      window.location.replace('home.html');
+      window.location.replace('home');
     }
 
     document.addEventListener('click', leave);
@@ -69,7 +69,7 @@
       sessionStorage.setItem('kh_skip_splash', '1');
       document.body.classList.add('leaving');
       setTimeout(function() {
-        window.location.href = 'home.html';
+        window.location.href = 'home';
       }, 500);
     }
   </script>

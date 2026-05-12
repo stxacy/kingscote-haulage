@@ -1,0 +1,16 @@
+Options -MultiViews
+RewriteEngine On
+
+# Redirect HTTP → HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Strip .html extension: serve /about from about.html etc.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^.]+)$ $1.html [L]
+
+# If someone requests the .html directly, redirect to clean URL
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/([^.]+)\.html[\s?]
+RewriteRule ^ /%1 [R=301,L]

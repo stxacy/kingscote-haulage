@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>About Us — Kingscote Haulage</title>
+  <meta name="description" content="About Kingscote Haulage — our Euro VI Scania fleet, leadership team, and role within the Morrisroe Group. Environmental haulage specialists in Borehamwood, Hertfordshire.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Us — Kingscote Haulage">
+  <meta property="og:description" content="About Kingscote Haulage — our Euro VI Scania fleet, leadership team, and role within the Morrisroe Group. Environmental haulage specialists in Borehamwood.">
+  <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscote_haulage2.png">
+  <meta property="og:url" content="https://www.kingscotehaulage.co.uk/about">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css">
   <style>
 
@@ -337,16 +347,16 @@
   <nav class="site-nav">
     <div class="nav-inner">
 
-      <a href="home.html" class="logo-link" aria-label="Kingscote Haulage — Home">
+      <a href="home" class="logo-link" aria-label="Kingscote Haulage — Home">
         <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
       </a>
 
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="group.html">Group</a></li>
-        <li class="nav-cta"><a href="contact.html">Contact Us</a></li>
+        <li><a href="home">Home</a></li>
+        <li><a href="about" aria-current="page">About</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="group">Group</a></li>
+        <li class="nav-cta"><a href="contact">Contact Us</a></li>
       </ul>
 
       <button class="nav-toggle" aria-label="Menu">
@@ -553,7 +563,7 @@
 
         <div class="team-card" data-reveal>
           <div class="team-avatar">
-            <img src="aiden-kelly.jpg" alt="Aiden Kelly — General Manager" style="object-position: center 18%;">
+            <img src="aiden-kelly.jpg" alt="Aiden Kelly — General Manager" loading="lazy" style="object-position: center 18%;">
           </div>
           <div class="team-info">
             <span class="team-role">General Manager</span>
@@ -568,7 +578,7 @@
 
         <div class="team-card" data-reveal data-delay="1">
           <div class="team-avatar">
-            <img src="jamie-kelly.jpg" alt="Jamie Kelly — Operations Manager" style="object-position: center 12%;">
+            <img src="jamie-kelly.jpg" alt="Jamie Kelly — Operations Manager" loading="lazy" style="object-position: center 12%;">
           </div>
           <div class="team-info">
             <span class="team-role">Operations Manager</span>
@@ -595,7 +605,7 @@
         <h2>Work with us</h2>
         <p>Serving construction, civil engineering and environmental projects across the South East.</p>
       </div>
-      <a href="contact.html" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Contact the Team</a>
+      <a href="contact" class="button" style="white-space:nowrap; font-size:var(--text-xs);">Contact the Team</a>
     </div>
   </section>
 
@@ -610,21 +620,21 @@
         <img src="kingscotelogoclear2.png" alt="Kingscote Haulage" style="height:51px; width:auto;">
         <p>Environmental haulage and waste management services for construction and industry across the South East of England. A Morrisroe Group company.</p>
         <ul class="footer-policy-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookies Policy</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-          <li><a href="#">Modern Slavery Policy</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="cookies-policy">Cookies Policy</a></li>
+          <li><a href="terms">Terms &amp; Conditions</a></li>
+          <li><a href="modern-slavery">Modern Slavery Policy</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <span class="footer-col-title">Navigation</span>
         <ul class="footer-links">
-          <li><a href="home.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="group.html">Group</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="home">Home</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="group">Group</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
       </div>
 
@@ -716,5 +726,16 @@
       document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
   </script>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie preferences">
+    <div class="cookie-banner-inner">
+      <p>We use cookies to enable map functionality on this site. See our <a href="cookies-policy">Cookies Policy</a> and <a href="privacy-policy">Privacy Policy</a> for details.</p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-essential" id="cookieBtnEssential">Essential Only</button>
+        <button class="cookie-btn-accept" id="cookieBtnAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+  <script src="cookie-consent.js"></script>
 </body>
 </html>

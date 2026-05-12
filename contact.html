@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Contact — Kingscote Haulage</title>
+  <meta name="description" content="Contact Kingscote Haulage for environmental haulage quotes. Call +44 (0)20 8731 4000 or email us. Based in Borehamwood, serving London &amp; the South East.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Kingscote Haulage">
+  <meta property="og:description" content="Contact Kingscote Haulage for environmental haulage and waste management quotes. Based in Borehamwood, serving London and the South East.">
+  <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscote_haulage2.png">
+  <meta property="og:url" content="https://www.kingscotehaulage.co.uk/contact">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css">
   <style>
 
@@ -260,6 +270,34 @@
       .form-group select,
       .form-group textarea { padding: 10px var(--space-3); }
     }
+
+    /* ---- MAP CONSENT PLACEHOLDER ---- */
+    .map-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      height: 100%;
+      background-color: var(--color-blue-light);
+      padding: var(--space-8);
+      text-align: center;
+    }
+
+    .map-placeholder svg {
+      width: 36px;
+      height: 36px;
+      color: var(--color-blue-primary);
+      opacity: 0.45;
+    }
+
+    .map-placeholder p {
+      color: var(--color-grey-mid);
+      font-size: var(--text-sm);
+      margin: 0;
+      max-width: 220px;
+      line-height: var(--leading-relaxed);
+    }
   </style>
 </head>
 <body>
@@ -276,16 +314,16 @@
   <nav class="site-nav">
     <div class="nav-inner">
 
-      <a href="home.html" class="logo-link" aria-label="Kingscote Haulage — Home">
+      <a href="home" class="logo-link" aria-label="Kingscote Haulage — Home">
         <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
       </a>
 
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="group.html">Group</a></li>
-        <li class="nav-cta"><a href="contact.html" aria-current="page">Contact Us</a></li>
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="group">Group</a></li>
+        <li class="nav-cta"><a href="contact" aria-current="page">Contact Us</a></li>
       </ul>
 
       <button class="nav-toggle" aria-label="Menu">
@@ -476,14 +514,15 @@
         </p>
       </div>
 
-      <div class="location-map">
-        <iframe
-          src="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA&output=embed&z=15"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Kingscote Haulage — Yard, Watford"
-        ></iframe>
+      <div class="location-map" id="mapWrap">
+        <div class="map-placeholder" id="mapPlaceholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 3C12.5 3 8 7.5 8 13c0 8 10 20 10 20s10-12 10-20c0-5.5-4.5-10-10-10z"/>
+            <circle cx="18" cy="13" r="3.5"/>
+          </svg>
+          <p>Accept cookies to load the interactive map</p>
+          <button class="button" id="mapConsentBtn">Accept &amp; Load Map</button>
+        </div>
       </div>
 
     </div>
@@ -500,21 +539,21 @@
         <img src="kingscotelogoclear2.png" alt="Kingscote Haulage" style="height:51px; width:auto;">
         <p>Environmental haulage and waste management services for construction and industry across the South East of England. A Morrisroe Group company.</p>
         <ul class="footer-policy-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookies Policy</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-          <li><a href="#">Modern Slavery Policy</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="cookies-policy">Cookies Policy</a></li>
+          <li><a href="terms">Terms &amp; Conditions</a></li>
+          <li><a href="modern-slavery">Modern Slavery Policy</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <span class="footer-col-title">Navigation</span>
         <ul class="footer-links">
-          <li><a href="home.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="group.html">Group</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="home">Home</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="group">Group</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
       </div>
 
@@ -605,6 +644,46 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
+
+    // ---- Map consent ----
+    function loadMap() {
+      var wrap = document.getElementById('mapWrap');
+      if (!wrap) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA&output=embed&z=15';
+      f.allowFullscreen = true;
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.title = 'Kingscote Haulage — Yard, Watford';
+      f.style.cssText = 'width:100%;height:100%;border:0;display:block;';
+      wrap.innerHTML = '';
+      wrap.appendChild(f);
+    }
+
+    if (localStorage.getItem('kh_cookies') === 'all') {
+      loadMap();
+    } else {
+      var mapBtn = document.getElementById('mapConsentBtn');
+      if (mapBtn) mapBtn.addEventListener('click', function() {
+        localStorage.setItem('kh_cookies', 'all');
+        var b = document.getElementById('cookieBanner');
+        if (b) b.classList.remove('visible');
+        loadMap();
+      });
+    }
+
+    document.addEventListener('kh:consent:all', loadMap);
   </script>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie preferences">
+    <div class="cookie-banner-inner">
+      <p>We use cookies to enable map functionality on this site. See our <a href="cookies-policy">Cookies Policy</a> and <a href="privacy-policy">Privacy Policy</a> for details.</p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-essential" id="cookieBtnEssential">Essential Only</button>
+        <button class="cookie-btn-accept" id="cookieBtnAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+  <script src="cookie-consent.js"></script>
 </body>
 </html>
