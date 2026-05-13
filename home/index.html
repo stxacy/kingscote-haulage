@@ -14,6 +14,9 @@
   <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscote_haulage2.png">
   <meta property="og:url" content="https://www.kingscotehaulage.co.uk/home">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#101c3e">
+  <link rel="canonical" href="https://www.kingscotehaulage.co.uk/home">
+  <link rel="preload" as="image" href="../kingscote_haulage2.png">
   <link rel="stylesheet" href="../styles.css">
   <style>
 
@@ -564,7 +567,7 @@
       <div class="services-grid">
 
         <!-- 01 Haulage & Muck Away -->
-        <div class="service-card-wrap" data-reveal>
+        <div class="service-card-wrap" data-reveal tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">01</span>
@@ -590,7 +593,7 @@
         </div>
 
         <!-- 02 Recycled Aggregates -->
-        <div class="service-card-wrap" data-reveal data-delay="1">
+        <div class="service-card-wrap" data-reveal data-delay="1" tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">02</span>
@@ -615,7 +618,7 @@
         </div>
 
         <!-- 03 Grab Hire -->
-        <div class="service-card-wrap" data-reveal data-delay="2">
+        <div class="service-card-wrap" data-reveal data-delay="2" tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">03</span>
@@ -640,7 +643,7 @@
         </div>
 
         <!-- 04 Waste Disposal -->
-        <div class="service-card-wrap" data-reveal>
+        <div class="service-card-wrap" data-reveal tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">04</span>
@@ -664,7 +667,7 @@
         </div>
 
         <!-- 05 Landfill & Restoration -->
-        <div class="service-card-wrap" data-reveal data-delay="1">
+        <div class="service-card-wrap" data-reveal data-delay="1" tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">05</span>
@@ -689,7 +692,7 @@
         </div>
 
         <!-- 06 Logistics & Fleet Control -->
-        <div class="service-card-wrap" data-reveal data-delay="2">
+        <div class="service-card-wrap" data-reveal data-delay="2" tabindex="0">
           <div class="service-card">
             <div class="card-front">
               <span class="service-number">06</span>
@@ -886,6 +889,7 @@
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Menu');
         if (nav.classList.contains('nav-open')) {
           nav.style.backgroundColor = 'rgba(255,255,255,1)';
           nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
@@ -899,6 +903,7 @@
       links.forEach(function(link) {
         link.addEventListener('click', function() {
           nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-label', 'Menu');
           updateNav();
         });
       });
@@ -906,6 +911,7 @@
       document.addEventListener('click', function(e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-label', 'Menu');
           updateNav();
         }
       });
@@ -915,6 +921,12 @@
     document.querySelectorAll('.service-card-wrap').forEach(function(wrap) {
       wrap.addEventListener('click', function() {
         this.classList.toggle('flipped');
+      });
+      wrap.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.classList.toggle('flipped');
+        }
       });
     });
 

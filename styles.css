@@ -475,7 +475,7 @@ em { font-family: var(--font-serif); }
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: 4px;
+  padding: 10px;
   background: none;
   border: none;
 }
@@ -922,3 +922,23 @@ em { font-family: var(--font-serif); }
 [data-reveal][data-delay="2"] { transition-delay: 0.2s; }
 [data-reveal][data-delay="3"] { transition-delay: 0.3s; }
 [data-reveal][data-delay="4"] { transition-delay: 0.4s; }
+
+
+/* =============================================================
+   FOCUS VISIBLE
+   ============================================================= */
+
+a:focus-visible,
+button:focus-visible,
+.service-card-wrap:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-blue-primary);
+  outline-offset: 3px;
+}
+
+/* Form inputs already show blue border on focus — keep that, no duplicate ring */
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  outline: none;
+}

@@ -14,6 +14,8 @@
   <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscote_haulage2.png">
   <meta property="og:url" content="https://www.kingscotehaulage.co.uk/group">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#101c3e">
+  <link rel="canonical" href="https://www.kingscotehaulage.co.uk/group">
   <link rel="stylesheet" href="../styles.css">
   <style>
 
@@ -454,6 +456,7 @@
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Menu');
         if (nav.classList.contains('nav-open')) {
           nav.classList.remove('nav-hidden');
         }
@@ -462,12 +465,14 @@
       links.forEach(function(link) {
         link.addEventListener('click', function() {
           nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-label', 'Menu');
         });
       });
 
       document.addEventListener('click', function(e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-label', 'Menu');
         }
       });
 

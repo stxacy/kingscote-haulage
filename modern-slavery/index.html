@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../styles.css">
+  <meta name="theme-color" content="#101c3e">
+  <link rel="canonical" href="https://www.kingscotehaulage.co.uk/modern-slavery">
   <meta name="description" content="Kingscote Haulage Modern Slavery Statement — our commitment to preventing modern slavery and human trafficking in our business and supply chains.">
   <style>
     .policy-section { padding: var(--space-20) 0; }
@@ -236,13 +238,14 @@
       toggle.addEventListener('click', function(e) {
         e.stopPropagation();
         nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Menu');
         if (nav.classList.contains('nav-open')) nav.classList.remove('nav-hidden');
       });
       links.forEach(function(link) {
-        link.addEventListener('click', function() { nav.classList.remove('nav-open'); });
+        link.addEventListener('click', function() { nav.classList.remove('nav-open'); toggle.setAttribute('aria-label', 'Menu'); });
       });
       document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target)) nav.classList.remove('nav-open');
+        if (!nav.contains(e.target)) { nav.classList.remove('nav-open'); toggle.setAttribute('aria-label', 'Menu'); }
       });
       var lastY = window.scrollY, navH = nav.offsetHeight;
       window.addEventListener('scroll', function() {

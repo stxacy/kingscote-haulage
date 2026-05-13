@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Page Not Found — Kingscote Haulage</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#101c3e">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .error-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(155deg, #00527a 0%, #0077ab 55%, var(--color-blue-primary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-wrap::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -5%;
+      width: 55%; height: 160%;
+      background: rgba(255,255,255,0.05);
+      transform: skewX(-15deg);
+      pointer-events: none;
+    }
+
+    .error-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: var(--z-raised);
+    }
+
+    .error-content {
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 6rem var(--space-8) var(--space-16);
+      width: 100%;
+    }
+
+    .error-eyebrow {
+      font-family: var(--font-sans);
+      font-size: clamp(7rem, 20vw, 14rem);
+      font-weight: 100;
+      color: rgba(255,255,255,0.07);
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: calc(var(--space-6) * -1);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .error-content .section-label {
+      margin-bottom: var(--space-4);
+    }
+
+    .error-content h1 {
+      color: var(--color-white);
+      margin-bottom: var(--space-6);
+    }
+
+    .error-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      max-width: 460px;
+      margin-bottom: var(--space-10);
+    }
+
+    .error-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* Thin accent at bottom of error section */
+    .error-divider {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.15);
+      z-index: var(--z-raised);
+    }
+
+    /* Quick-links strip */
+    .error-links {
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-grey-light);
+      padding: var(--space-12) 0;
+    }
+
+    .error-links-inner {
+      max-width: var(--container-lg);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-10);
+      flex-wrap: wrap;
+    }
+
+    .error-links-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-grey-mid);
+      white-space: nowrap;
+    }
+
+    .error-nav-links {
+      display: flex;
+      gap: var(--space-8);
+      list-style: none;
+      margin: 0; padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .error-nav-links a {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-navy-dark);
+      transition: var(--transition-colour);
+    }
+
+    .error-nav-links a:hover {
+      color: var(--color-blue-primary);
+    }
+
+    @media (max-width: 767px) {
+      .error-content { padding: 5rem var(--space-6) var(--space-12); }
+      .error-links-inner { padding: 0 var(--space-4); gap: var(--space-6); flex-direction: column; align-items: flex-start; }
+      .error-nav-links { gap: var(--space-6); }
+    }
+
+    @media (max-width: 479px) {
+      .error-content { padding: 5rem var(--space-4) var(--space-10); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+
+      <a href="home" class="logo-link" aria-label="Kingscote Haulage — Home">
+        <img src="kingscotelogoclear2.png" alt="" class="logo-img" aria-hidden="true">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="group">Group</a></li>
+        <li class="nav-cta"><a href="contact">Contact Us</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       ERROR HERO
+       ============================================================ -->
+  <main class="error-wrap">
+    <div class="error-main">
+      <div class="error-content">
+        <p class="error-eyebrow" aria-hidden="true">404</p>
+        <span class="section-label on-dark">Page Not Found</span>
+        <h1>We Can't Find<br>That Page</h1>
+        <p>
+          The page you're looking for may have moved, been renamed, or no longer exists.
+          Try navigating from the home page or contact us directly.
+        </p>
+        <div class="error-actions">
+          <a href="home" class="button">Back to Home</a>
+          <a href="contact" class="cta" style="font-size:var(--text-sm); padding:10px 28px;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="error-divider"></div>
+  </main>
+
+
+  <!-- ============================================================
+       QUICK LINKS STRIP
+       ============================================================ -->
+  <div class="error-links" role="navigation" aria-label="Site links">
+    <div class="error-links-inner">
+      <span class="error-links-label">Try these pages</span>
+      <ul class="error-nav-links">
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About Us</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="group">The Group</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <script>
+    (function() {
+      var nav    = document.querySelector('.site-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var links  = document.querySelectorAll('.nav-links a');
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Menu');
+        if (nav.classList.contains('nav-open')) nav.classList.remove('nav-hidden');
+      });
+      links.forEach(function(link) {
+        link.addEventListener('click', function() { nav.classList.remove('nav-open'); toggle.setAttribute('aria-label', 'Menu'); });
+      });
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) { nav.classList.remove('nav-open'); toggle.setAttribute('aria-label', 'Menu'); }
+      });
+    })();
+  </script>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie preferences">
+    <div class="cookie-banner-inner">
+      <p>We use cookies to enable map functionality on this site. See our <a href="cookies-policy">Cookies Policy</a> and <a href="privacy-policy">Privacy Policy</a> for details.</p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-essential" id="cookieBtnEssential">Essential Only</button>
+        <button class="cookie-btn-accept" id="cookieBtnAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+  <script src="cookie-consent.js"></script>
+</body>
+</html>
