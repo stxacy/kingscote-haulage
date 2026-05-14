@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../kingscotelogoclear2small.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Kingscote Haulage — Environmental Haulage & Waste Management</title>
@@ -11,9 +11,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Kingscote Haulage — Environmental Haulage &amp; Waste Management">
   <meta property="og:description" content="Kingscote Haulage provides environmental haulage and waste management across London and the South East. Euro VI compliant Scania fleet.">
-  <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscote_haulage2.png">
+  <meta property="og:image" content="https://www.kingscotehaulage.co.uk/kingscotelogoclear2small.png">
   <meta property="og:url" content="https://www.kingscotehaulage.co.uk/home">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#101c3e">
   <link rel="canonical" href="https://www.kingscotehaulage.co.uk/home">
   <link rel="preload" as="image" href="../kingscote_haulage2.png">
@@ -858,10 +858,10 @@
 
         var currentY = window.scrollY;
         var alpha    = Math.min(currentY / fadeOver, 1);
-        var shadow   = alpha > 0.85 ? '0 1px 0 rgba(0,0,0,0.08)' : 'none';
+        var border   = alpha > 0.85 ? 'rgba(0,0,0,0.08)' : 'transparent';
 
         nav.style.backgroundColor = 'rgba(255,255,255,' + alpha + ')';
-        nav.style.boxShadow = shadow;
+        nav.style.borderColor = border;
 
         if (alpha < 0.5) {
           nav.classList.add('nav-transparent');
@@ -880,7 +880,7 @@
 
       // Set initial transparent state
       nav.style.backgroundColor = 'rgba(255,255,255,0)';
-      nav.style.boxShadow = 'none';
+      nav.style.borderColor = 'transparent';
       nav.classList.add('nav-transparent');
 
       window.addEventListener('scroll', updateNav, { passive: true });
@@ -892,7 +892,7 @@
         toggle.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Menu');
         if (nav.classList.contains('nav-open')) {
           nav.style.backgroundColor = 'rgba(255,255,255,1)';
-          nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
+          nav.style.borderColor = 'rgba(0,0,0,0.08)';
           nav.classList.remove('nav-transparent');
           nav.classList.remove('nav-hidden');
         } else {
