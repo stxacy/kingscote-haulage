@@ -516,9 +516,8 @@ em { font-family: var(--font-serif); }
 .page-hero-content {
   position: relative;
   z-index: var(--z-raised);
-  max-width: var(--container-lg);
-  margin: 0 auto;
-  padding: 0 var(--space-8);
+  width: 100%;
+  padding: 0 var(--space-5);
 }
 
 .page-hero-label {
@@ -766,6 +765,7 @@ em { font-family: var(--font-serif); }
 
   /* Mobile section spacing */
   .page-hero { padding: 7rem 0 3rem; }
+  .page-hero-content { padding: 0 var(--space-4); }
 
   .cta-band { padding: var(--space-12) 0; }
 
