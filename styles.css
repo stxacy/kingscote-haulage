@@ -735,14 +735,17 @@ em { font-family: var(--font-serif); }
     display: flex;
   }
 
-  .nav-links li a {
+  .nav-links li a,
+  .nav-links .nav-cta a {
     display: block;
     padding: var(--space-4) var(--space-8);
     color: var(--color-navy-dark);
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: left;
   }
 
-  .nav-links li a:hover {
+  .nav-links li a:hover,
+  .nav-links .nav-cta a:hover {
     color: var(--color-blue-primary);
     background-color: rgba(0, 156, 222, 0.04);
   }
