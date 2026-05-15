@@ -16,10 +16,10 @@
   --color-navy-mid:        #212c3d;
   --color-navy-muted:      #162a3c;
 
-  --color-blue-primary:    #009CDE;
-  --color-blue-medium:     #009CDE;
-  --color-blue-bright:     #009CDE;
-  --color-blue-accessible: #009CDE;
+  --color-blue-primary:    #0071B9;
+  --color-blue-medium:     #0071B9;
+  --color-blue-bright:     #0071B9;
+  --color-blue-accessible: #0071B9;
   --color-blue-light:      #e5ecff;
 
   --color-white:           #ffffff;
@@ -490,7 +490,7 @@ em { font-family: var(--font-serif); }
    PAGE HERO (interior pages)
    ------------------------------------------------------------- */
 .page-hero {
-  background: linear-gradient(155deg, #006699 0%, #0088bb 55%, var(--color-blue-primary) 100%);
+  background: linear-gradient(155deg, #004f82 0%, #005f9e 55%, var(--color-blue-primary) 100%);
   padding: 9rem 0 5rem;
   position: relative;
   overflow: hidden;
@@ -857,7 +857,7 @@ em { font-family: var(--font-serif); }
   transition: background-color 0.3s ease;
 }
 
-.cookie-btn-accept:hover { background-color: #007ab3; }
+.cookie-btn-accept:hover { background-color: #005a94; }
 
 .cookie-btn-essential {
   padding: 10px 20px;
