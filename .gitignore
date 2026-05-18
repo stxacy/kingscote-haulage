@@ -1,8 +1,3 @@
-# OS
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-*.swp
-*.swo
+# Build artefacts / handover docs
+build-summary.html
+*.pdf

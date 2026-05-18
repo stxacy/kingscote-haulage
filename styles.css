@@ -526,7 +526,7 @@ em { font-family: var(--font-serif); }
   font-weight: 400;
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-blue-medium);
+  color: rgba(255,255,255,0.7);
   margin-bottom: var(--space-4);
   display: block;
 }
