@@ -1,3 +1,7 @@
 # Build artefacts / handover docs
 build-summary.html
 *.pdf
+
+# Unused test images
+kingscote_haulage.png
+kingscote_truck.png
