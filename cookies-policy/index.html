@@ -18,6 +18,19 @@
   <meta property="og:url" content="https://www.kingscotehaulage.co.uk/cookies-policy">
   <meta name="twitter:card" content="summary">
   <style>
+    html { scroll-behavior: smooth; }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .page-hero-label, .page-hero h1, .page-hero .hero-sub { opacity: 0; }
+
+    .page-hero.hero-ready .page-hero-label { animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+    .page-hero.hero-ready h1              { animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+    .page-hero.hero-ready .hero-sub       { animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+
     .policy-section { padding: var(--space-20) 0; }
     .policy-content { max-width: 720px; }
 
@@ -136,10 +149,12 @@
         <span class="policy-meta">Last updated: May 2026</span>
 
         <h2>What Are Cookies?</h2>
-        <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and to provide information to the site owner. Similar technologies include local storage — a browser feature that stores data on your device without an expiry date.</p>
+        <p>Cookies are small data files placed on your device when you visit a website. They are widely used to make websites work efficiently and to provide information to the site owner. Cookies may be <strong>session cookies</strong> (deleted when you close your browser) or <strong>persistent cookies</strong> (which remain on your device across multiple visits).</p>
+        <p>Similar technologies include local storage — a browser feature that stores data on your device without a fixed expiry date. This policy covers both cookies and local storage.</p>
+        <p>This policy has been drafted to comply with the UK General Data Protection Regulation (UK GDPR) and the Privacy and Electronic Communications Regulations (PECR).</p>
 
         <h2>How We Use Cookies and Local Storage</h2>
-        <p>This website uses a small number of essential local storage entries to ensure the site functions correctly, and optional cookies loaded only with your consent. We do not use advertising cookies or behavioural tracking.</p>
+        <p>This website uses a small number of essential local storage entries to ensure the site functions correctly, and optional third-party cookies loaded only with your consent. We do not use advertising cookies or behavioural tracking.</p>
 
         <h2>Essential Storage (No Consent Required)</h2>
         <p>These entries are strictly necessary for the website to function and do not require your consent under UK GDPR.</p>
@@ -176,7 +191,7 @@
         </table>
 
         <h2>Functional Cookies (Consent Required)</h2>
-        <p>These cookies are only loaded if you click "Accept All" on the cookie banner. They are set by third-party services embedded in this website.</p>
+        <p>These cookies are only loaded if you click "Accept All" on the cookie banner. They are set by third-party services embedded in this website. Where consent is given, information stored by these cookies may be retained for up to 180 days.</p>
 
         <table class="cookie-table">
           <thead>
@@ -198,12 +213,12 @@
         <h2>Google Fonts</h2>
         <p>This website loads fonts from Google Fonts. Google states that their Fonts service does not set persistent cookies. However, your IP address is transmitted to Google's servers when fonts are loaded. For more information, see <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts Privacy FAQ</a>.</p>
 
-        <h2>Managing Your Cookie Preferences</h2>
-        <p>You can update your cookie preference at any time by clearing your browser's local storage for this site and reloading the page — the cookie banner will reappear.</p>
-        <p>Most browsers also allow you to block or delete cookies through their settings. For guidance on how to do this, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">www.allaboutcookies.org</a>. Note that disabling cookies may affect some website functionality.</p>
+        <h2>Your Right to Control Cookies</h2>
+        <p>You have the right to control and opt out of cookies. You can update your preference at any time by clearing your browser's local storage for this site and reloading the page — the cookie banner will reappear. You can also withdraw consent by clicking "Essential Only" when the banner is displayed.</p>
+        <p>Most browsers allow you to block or delete cookies through their settings. For guidance, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">www.allaboutcookies.org</a>. Please note that disabling cookies may restrict access to certain features of this website.</p>
 
         <h2>Changes to This Policy</h2>
-        <p>We may update this Cookies Policy from time to time. The date at the top of this page indicates when it was last revised. For questions about our use of cookies, contact us at <a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a>.</p>
+        <p>We reserve the right to update this Cookies Policy from time to time. Any changes will be posted on this page. The date at the top indicates when the policy was last revised. For questions about our use of cookies, please contact us at <a href="mailto:info@kingscotehaulage.co.uk">info@kingscotehaulage.co.uk</a>.</p>
       </div>
     </div>
   </section>
@@ -287,14 +302,19 @@
 
     (function() {
       var splash = document.getElementById('pageSplash');
-      if (!splash) return;
+      var hero   = document.querySelector('.page-hero');
+      function revealHero() { if (hero) hero.classList.add('hero-ready'); }
+
+      if (!splash) { revealHero(); return; }
       if (sessionStorage.getItem('kh_skip_splash')) {
         sessionStorage.removeItem('kh_skip_splash');
         splash.remove();
+        revealHero();
         return;
       }
       setTimeout(function() {
         splash.classList.add('splash-out');
+        revealHero();
         splash.addEventListener('transitionend', function() { splash.remove(); }, { once: true });
       }, 1400);
     })();
