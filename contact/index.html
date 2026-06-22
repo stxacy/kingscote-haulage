@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="icon" type="image/png" href="../kingscotelogoclear2small.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../kingscotelogoclear2small.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../kingscotelogoclear2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Contact — Kingscote Haulage</title>
@@ -307,32 +308,46 @@
       .form-group textarea { padding: 10px var(--space-3); }
     }
 
-    /* ---- MAP CONSENT PLACEHOLDER ---- */
-    .map-placeholder {
+    /* ---- MAP LINK BOX ---- */
+    .map-link-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: var(--space-4);
+      gap: var(--space-6);
       height: 100%;
       background-color: var(--color-blue-light);
-      padding: var(--space-8);
+      border: 1px solid rgba(0,113,185,0.15);
+      padding: var(--space-10);
       text-align: center;
+      text-decoration: none;
+      transition: background-color 0.25s ease;
     }
 
-    .map-placeholder svg {
-      width: 36px;
-      height: 36px;
+    .map-link-box:hover {
+      background-color: rgba(0,113,185,0.12);
+    }
+
+    .map-link-box svg {
+      width: 40px;
+      height: 40px;
       color: var(--color-blue-primary);
-      opacity: 0.45;
+      flex-shrink: 0;
     }
 
-    .map-placeholder p {
-      color: var(--color-grey-mid);
+    .map-link-box p {
+      color: var(--color-body-text);
       font-size: var(--text-sm);
       margin: 0;
-      max-width: 220px;
       line-height: var(--leading-relaxed);
+    }
+
+    .map-link-box .map-link-label {
+      font-family: var(--font-label);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-blue-primary);
     }
   </style>
 </head>
@@ -550,15 +565,15 @@
         </p>
       </div>
 
-      <div class="location-map" id="mapWrap">
-        <div class="map-placeholder" id="mapPlaceholder">
+      <div class="location-map">
+        <a class="map-link-box" href="https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 3C12.5 3 8 7.5 8 13c0 8 10 20 10 20s10-12 10-20c0-5.5-4.5-10-10-10z"/>
             <circle cx="18" cy="13" r="3.5"/>
           </svg>
-          <p>Accept cookies to load the interactive map</p>
-          <button class="button" id="mapConsentBtn">Accept &amp; Load Map</button>
-        </div>
+          <p>10 Elton Way, Watford, WD25 8HA</p>
+          <span class="map-link-label">View on Google Maps →</span>
+        </a>
       </div>
 
     </div>
@@ -609,7 +624,7 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Kingscote Haulage Ltd. A Morrisroe Group Company.</p>
-      <p>Registered in England & Wales</p>
+      <p>Registered in England & Wales. Company No. 12526052</p>
     </div>
   </footer>
 
@@ -689,34 +704,6 @@
       document.querySelectorAll('[data-reveal]').forEach(function(el) { io.observe(el); });
     })();
 
-    // ---- Map consent ----
-    function loadMap() {
-      var wrap = document.getElementById('mapWrap');
-      if (!wrap) return;
-      var f = document.createElement('iframe');
-      f.src = 'https://maps.google.com/maps?q=10+Elton+Way,+Watford,+WD25+8HA&output=embed&z=15';
-      f.allowFullscreen = true;
-      f.loading = 'lazy';
-      f.referrerPolicy = 'no-referrer-when-downgrade';
-      f.title = 'Kingscote Haulage — Yard, Watford';
-      f.style.cssText = 'width:100%;height:100%;border:0;display:block;';
-      wrap.innerHTML = '';
-      wrap.appendChild(f);
-    }
-
-    if (localStorage.getItem('kh_cookies') === 'all') {
-      loadMap();
-    } else {
-      var mapBtn = document.getElementById('mapConsentBtn');
-      if (mapBtn) mapBtn.addEventListener('click', function() {
-        localStorage.setItem('kh_cookies', 'all');
-        var b = document.getElementById('cookieBanner');
-        if (b) b.classList.remove('visible');
-        loadMap();
-      });
-    }
-
-    document.addEventListener('kh:consent:all', loadMap);
   </script>
 
   <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie preferences">
