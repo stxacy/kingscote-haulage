@@ -505,8 +505,7 @@
             </p>
           </div>
 
-          <form class="contact-form" name="contact" method="POST" data-netlify="true" novalidate id="contactForm">
-            <input type="hidden" name="form-name" value="contact">
+          <form class="contact-form" method="POST" novalidate id="contactForm">
 
             <div class="form-row">
               <div class="form-group">
@@ -744,10 +743,10 @@
         btn.disabled = true;
         btn.textContent = 'Sending…';
 
-        fetch('/', {
+        fetch('https://formspree.io/f/REPLACE_WITH_FORM_ID', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
         })
         .then(function() {
           var wrap = form.closest('.contact-form-wrap');
