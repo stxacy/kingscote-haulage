@@ -700,6 +700,24 @@ em { font-family: var(--font-serif); }
   margin: 0;
 }
 
+.footer-bottom-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-credit {
+  color: var(--color-grey-mid);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 300;
+  transition: var(--transition-colour);
+}
+
+.footer-credit:hover {
+  color: var(--color-blue-primary);
+}
+
 
 /* -------------------------------------------------------------
    RESPONSIVE — SHARED
@@ -715,6 +733,7 @@ em { font-family: var(--font-serif); }
   .nav-inner { padding: 0 var(--space-4); }
   .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
   .footer-bottom { flex-direction: column; gap: var(--space-3); text-align: center; }
+  .footer-bottom-legal { align-items: center; }
 
   /* Mobile nav dropdown */
   .nav-links {
