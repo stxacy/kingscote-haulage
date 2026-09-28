@@ -5,3 +5,7 @@ build-summary.html
 # Unused test images
 kingscote_haulage.png
 kingscote_truck.png
+
+# OS / local
+.DS_Store
+_private/
